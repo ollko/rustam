@@ -1,0 +1,51 @@
+{% extends "base/__base.html" %}
+
+{% load mptt_tags %}
+
+{% block title %}
+	<title>Купить {{ product.name }} в Москве</title>
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+
+{% block content %}
+<!-- BREADCRAMBS -->
+	{% include 'base/_breadcrambs.html' %}
+<!-- /BREADCRAMBS -->
+
+<div class="row">
+
+	<div class="col-6 col-lg-6">
+		
+			{% if product.image %}
+				<img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+			{% else %}
+
+				{% include 'base/_div-for-no-img-camera-shop.html' %}
+				
+			{% endif %}
+			
+		
+	</div><!--/span-->
+
+	<div class="col-6 col-lg-6">
+		
+			<div class="card-body">
+				<h6 class="card-title">{{ product.name }}</h6>
+				<p class="card-text">{{ product.price }} pyб.</p>
+				<form action="{% url "cart:CartAdd" product.id %}" method="post">
+					<div class="input-group">
+						{{ cart_product_form }}
+						{% csrf_token %}
+						<input type="submit" class="btn btn-primary btn-sm" value="В корзину">
+					</div>
+				</form>
+				<!-- <a href="#" class="btn btn-primary">В корзину</a> -->
+			</div>
+		
+	</div><!--/span-->
+
+</div><!--/row-->
+{% endblock %}

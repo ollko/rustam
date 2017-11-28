@@ -1,0 +1,8 @@
+Django==1.11.6
+django-bootstrap-form==3.3
+django-mptt==0.8.7
+olefile==0.44
+Pillow==4.3.0
+pytz==2017.2
+six==1.11.0
+Unidecode==0.4.21

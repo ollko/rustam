@@ -1,0 +1,21 @@
+{% extends "cart/__cart_base.html" %}
+{% load bootstrap %}
+	{% block title %}
+		<title>Оформление заказа</title>
+	{% endblock %}
+
+{% block cart %}
+
+<div class = 'my-form'>
+	<form action="" method="post" >
+	    <legend>Оформление заказа: <small class="text-muted">шаг 1 из 2</small></legend>
+	    {% csrf_token %}
+	    {{ form|bootstrap }}
+	   
+			<a href="{% url 'cart:CartDetail' %}" class="btn btn-secondary" role="button">ВЕРНУТЬСЯ В КОРЗИНУ</a>
+			&nbsp;&nbsp;
+			<button type="submit" class="btn btn-success">ДАЛЕЕ</button>			
+	    
+	</form>
+</div>
+{% endblock %}

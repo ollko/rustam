@@ -1,0 +1,24 @@
+{% extends "base/__base.html" %}
+
+{% load mptt_tags %}
+
+{% block title %}
+	<title>Купить {{ category.name }} в Москве</title>
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block content %}
+<!-- BREADCRAMBS ***-->
+	{% include 'base/_breadcrambs.html' %}
+<!-- /BREADCRAMBS -->
+
+<div class="row">
+{% for product in products %}
+
+	{% include 'base/_product_cards.html' %}
+
+{% endfor %}
+</div><!--/row-->
+{% endblock %}

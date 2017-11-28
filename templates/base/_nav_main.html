@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark rounded mb-3 sticky-top">
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon "></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav text-md-center nav-justified w-100">
+    {% url 'home:home' as home %}
+      <li class="nav-item {% if home == current_url %}active{% endif %}">
+        <a class="nav-link" href="{% url 'home:home' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Главная <span class="sr-only">(current)</span></a>
+      </li>
+    {% url 'home:about' as about %}  
+      <li class="nav-item {% if about == current_url %}active{% endif %}">
+        <a class="nav-link" href="{% url 'home:about' %}">О нас</a>
+      </li>
+    {% url 'home:shipping' as shipping %}
+      <li class="nav-item {% if shipping == current_url %}active{% endif %}">
+        <a class="nav-link" href="{% url 'home:shipping' %}">Доставка</a>
+      </li>
+    {% url 'home:contacts' as contacts %}
+      <li class="nav-item {% if contacts == current_url %}active{% endif %}">
+        <a class="nav-link" href="{% url 'home:contacts' %}">Контакты</a>
+      </li>
+    </ul>
+    <!-- {% include 'base/_form_search.html' %} -->
+  </div>
+  
+</nav>

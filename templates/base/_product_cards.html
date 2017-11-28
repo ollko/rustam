@@ -1,0 +1,33 @@
+{% load static %}
+
+{% for product in products %}
+
+<div class="col-6 col-lg-4 col-product">
+		<div class="card my-card" >
+			<a href="{{ product.get_absolute_url }}">
+				
+				{% if product.image %}
+					
+						<img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+					
+				{% else %}
+					
+					<div class='no-product-img'>&nbsp;</div>
+					
+				{% endif %}
+			</a>
+			<div class="card-body my-product-card">
+				<p class="card-title text-dark text-right product-card-title">{{ product.name }}</p>
+				
+				<form class = "float-right" action="{% url 'cart:CartAdd' product.id %}" method="post">
+					<div class="input-group">
+						{{ cart_product_form }}
+						{% csrf_token %}
+						<input type="submit" class="btn btn-primary btn-sm" value="В корзину">
+					</div>
+				</form>			
+			</div>
+		</div>
+	</div><!--/span-->
+	
+{% endfor %}		

@@ -1,0 +1,98 @@
+<!doctype html>
+{% load static %}
+
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../../../favicon.ico">
+
+		{% block title %}
+		<title>Магазин хозяйственных товаров</title>
+		{% endblock %}
+
+		{% block css %}
+			{% include 'base/_css.html' %}
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+			<header class="masthead">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+              <h2 class="text-muted">
+              <a href="/">Магазин хозяйственных товаров</a>
+              </h2>
+            </div>
+            <div class="col-12 col-md-2">
+              <div class='tel'>+7 (910) 480-81-86</div><div class='tel'>+7 (965) 120-61-06</div >
+            </div>
+            <div class="col-12 col-md-2">
+              <div class="email">
+                <a href="mailto:#">rusglomer@mail.ru</a>
+              </div>             
+              <div class="url">
+                <a href="#">www.pls-posuda.ru</a>
+              </div>
+            </div >             
+                   
+            <div class="cart col-12 col-md-2 text-right">
+              
+              {% block popover_cart %}
+                {% include 'base/_popover_cart_real.html' %}              
+              {% endblock %}
+              
+            </div>         
+          </div>
+        </div>       
+      
+          {% block nav_main %}
+          
+  					{% include 'base/_nav_main.html' %}
+            
+  				{% endblock %}
+			</header>
+
+			<main role="main">
+
+				<div class="row row-offcanvas row-offcanvas-left">
+          <hr>
+          {% block side_bar %}
+            {% include 'base/_side_bar.html' %}
+          {% endblock %}
+        <div class="col-12 col-md-9">
+          <p class="float-left d-md-none">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Каталог</button>
+          </p>
+
+          {% block jumbotron %}
+          <div class="jumbotron d-none d-lg-block my-jumbotron" style="background-image: url({% static 'img/rula-825x248.jpg' %})">
+            <h2 class="display-4 text-center">Добро пожаловать!</h2>
+            <h5 class="display-5 text-center d-none d-lg-block">Наш магазин работает круглосуточно!</h5>
+          </div>
+          {% endblock %}
+
+          {% block content %}
+          {% endblock %}
+        </div><!--/span-->      
+      </div><!--/row-->
+
+      
+
+    </main>	
+
+
+    <footer>
+      <p class='text-muted'>&copy; Rusglomer 2017</p>
+    </footer>
+</div><!--/.container-->
+	{% block js %}
+		{% include 'base/_js.html' %}
+	{% endblock %}
+    
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../../../favicon.ico">
+
+		{% block title %}
+		<title>Магазин хозяйственных товаров</title>
+		{% endblock %}
+
+		{% block css %}
+			{% include 'base/_css.html' %}
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+			<header class="masthead">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-6">
+							<h3 class="text-muted"><a href="/">Магазин хозяйственных товаров</a></h3>
+						</div>
+						<div class="cart col-12 col-md-6 text-right">
+							<p><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+								Ваша корзина 
+								{% if not cart|length %}
+									<span> пуста</span>
+
+								{% else %}
+									<span class="badge badge-pill" style="background-color:#ff9800; color:#fff;"> {{cart|length}}</span>
+								{% endif %}
+								</a>
+							</p>
+						</div>         
+					</div>
+				</div>
+
+				{% block nav_main %}
+					{% include 'base/_nav_main.html' %}
+				{% endblock %}
+			</header>
+
+			<main role="main">
+
+				{% block cart %}
+				{% endblock %}
+
+		    </main>	
+
+
+			<footer>
+			<p>&copy; Rusglomer 2017</p>
+			</footer>
+		</div><!--/.container-->
+	{% block js %}
+		{% include 'base/_js.html' %}
+	{% endblock %}  
+	</body>
+</html>
