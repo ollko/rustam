@@ -1,6 +1,7 @@
 rustam2/settings/local.py
 db.sqlite3
 uploads/
+orders/tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

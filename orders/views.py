@@ -24,7 +24,14 @@ import os
 from django.shortcuts import get_object_or_404
 
 from decimal import Decimal
-from rustam2.settings.local import BASE_DIR
+
+
+from rustam2.settings.production import BASE_DIR
+
+try:
+	from rustam2.settings.local import BASE_DIR
+except:
+	pass
 
 class GeneratePDF(View):
 	def get(self, request, *args, **kwargs):

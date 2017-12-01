@@ -129,7 +129,14 @@ div.div-for-no-img-camera-cart i{
   font-size: 3rem;
   color: #c7c7c7;
 }
-
+div.no-product-img-cart{
+  /*background-image: url('/static/img/background28.jpg');*/
+  padding: 1em 0;
+  width: 200px;
+}
+a.a-cart:hover{
+  text-decoration: none;
+}
 /* /POPOVER CART*/
 
 /*SIDE MENU*/

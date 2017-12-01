@@ -12,10 +12,21 @@
 
 {% block content %}
 <!-- BREADCRAMBS -->
-	{% include 'base/_breadcrambs.html' %}
+	<div class="row">
+	<div class="col-12 bread-crambs">
+    {% for parent in category.get_ancestors %}
+        <span><a href="/catalog/{{ parent.slug }}/">{{ parent.name|upper }}</a> </span>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    {% endfor %}
+    <span> <a href="/catalog/{{ category.slug }}/">{{ category.name|upper }}</a></span>
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    {{ product.name }}
+	</div>
+</div>
+<br>
 <!-- /BREADCRAMBS -->
 
-<div class="row">
+<div class="row align-items-center">
 
 	<div class="col-6 col-lg-6">
 		
@@ -23,7 +34,8 @@
 				<img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
 			{% else %}
 
-				{% include 'base/_div-for-no-img-camera-shop.html' %}
+				<!-- {% include 'base/_div-for-no-img-camera-shop.html' %} -->
+				<div class="mx-auto text-center no-product-img-cart ">нет фото</div>
 				
 			{% endif %}
 			

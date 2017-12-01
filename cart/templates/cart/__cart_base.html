@@ -20,25 +20,31 @@
 		<div class="container">
 			<header class="masthead">
 				<div class="container">
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col-12 col-md-6">
-							<h3 class="text-muted"><a href="/">Магазин хозяйственных товаров</a></h3>
+							<h2 class="text-muted">
+								<a href="/">Магазин хозяйственных товаров</a>
+							</h2>
 						</div>
-						<div class="cart col-12 col-md-6 text-right">
-							<p><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+						<div class="col-12 col-md-2">
+							<div class='tel'>+7 (910) 480-81-86</div><div class='tel'>+7 (965) 120-61-06</div >
+						</div>
+						<div class="col-12 col-md-2">
+							<div class="email">
+								<a href="mailto:#">rusglomer@mail.ru</a>
+							</div>             
+							<div class="url">
+								<a href="#">www.pls-posuda.ru</a>
+							</div>
+						</div >             
 
-								Ваша корзина 
-								{% if not cart|length %}
-									<span> пуста</span>
+						<div class="cart col-12 col-md-2 text-right">
 
-								{% else %}
-									<span class="badge badge-pill" style="background-color:#ff9800; color:#fff;"> {{cart|length}}</span>
-								{% endif %}
-								</a>
-							</p>
+						{% include 'base/_popover_cart_real.html' %}              
+
 						</div>         
 					</div>
-				</div>
+				</div>      
 
 				{% block nav_main %}
 					{% include 'base/_nav_main.html' %}

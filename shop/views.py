@@ -14,9 +14,9 @@ from generic.mixins import CategoryListMixin
 from cart.forms import CartAddProductForm
 
 
-def show_tree(request):
+# def show_tree(request):
 	
-	return render(request,"shop/tree.html",{'nodes':Category.objects.all()})
+# 	return render(request,"shop/tree.html",{'nodes':Category.objects.all()})
 
 # Страница товаро из категории:
 class ProductList(ListView, CategoryListMixin):

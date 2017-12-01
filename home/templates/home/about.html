@@ -1,5 +1,7 @@
 {% extends "base/__base.html" %}
 
+{% load static %}
+
 {% block title %}
 	<title>О нас</title>
 
@@ -15,5 +17,14 @@
 <h3>О нас</h3>
 <p>Мы занимаемся мелкооптовой продажей пластиковой посуды для ..</p>
 <p>Так же в магазине представлен щирокий ассортимент товаров для дома и бытовой химии.</p>
-
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img class="img-fluid" src="{% static 'img/warehouse.jpg' %}" alt='Наш склад'>
+    </div>
+    <div class="col">
+      <img class="img-fluid" src="{% static 'img/warehouse1.jpg' %}" alt='Наш склад со стороны улицы'>
+    </div>
+   </div>
+</div>
 {% endblock %}

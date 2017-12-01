@@ -20,7 +20,14 @@ from django.contrib.sessions.models import Session
 from django.conf import settings
 from django.core.exceptions import ValidationError
 import os
-from rustam2.settings import local
+
+from rustam2.settings.production import BASE_DIR
+
+try:
+	from rustam2.settings.local import BASE_DIR
+except:
+	pass
+
 from.utils import write_pdf_to_disk, send_pdf_order
 
 
@@ -79,7 +86,7 @@ def post_save_receiver_order_model(sender, instance, created, **kwargs):
 		order_id = instance.id
 		filename = "orders/tmp/Order_%s.pdf" %(order_id)
 		context = {
-				'path_to_fonts':os.path.join(local.BASE_DIR,'static/fonts'),
+				'path_to_fonts':os.path.join(BASE_DIR,'static/fonts'),
 				'order': instance,
 			}
 		write_pdf_to_disk('other/invoice.html', filename, context)

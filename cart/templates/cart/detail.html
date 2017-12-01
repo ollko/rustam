@@ -22,14 +22,12 @@
       {% for item in cart %}
         {% with product=item.product %}
           <tr>
-            <td>
-              <a href="{{ product.get_absolute_url }}">
-                {% comment %}<img style="max-width: 250px" src="{{ product.image.url }}" alt="" />{% endcomment %}
-
+            <td class='cart-product-img'>
+              <a class='a-cart' href="{{ product.get_absolute_url }}">
                 {% if product.image %}
                   <img class="card-img-top product-card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
                 {% else %}
-                  {% include 'base/_div-for-no-img-camera-cart.html' %}
+                <div class="mx-auto text-center no-product-img-cart ">нет фото</div>
                 {% endif %}
 
               </a>

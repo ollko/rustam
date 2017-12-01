@@ -1,7 +1,17 @@
 {% if not cart|length %}
   <i class="fa fa-shopping-cart" ></i>&nbsp; Ваша корзина пуста
 
+{% elif current_url == '/cart/' %}
+
+  <p><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+    Ваша корзина
+  
+    <span class="badge badge-pill" style="background-color:#ff9800; color:#fff;"> {{cart|length}}</span>
+  </p>
+
 {% else %}
+
 <a tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><i class="fa fa-shopping-cart" >&nbsp;Ваша корзина</i>
 <span class="badge badge-pill" style="background-color:#ff9800; color:#fff;">&nbsp;{{cart|length}}</span>
 {% endif %}
