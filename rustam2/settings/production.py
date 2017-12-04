@@ -142,6 +142,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+print 'STATICFILES_DIRS = ',STATICFILES_DIRS
 
 # MEDIA_URL = '/media/'
 
@@ -149,9 +150,9 @@ STATICFILES_DIRS = [
 
 CART_SESSION_ID = 'cart'
 
-MEDIA_ROOT = '/home/u67523/sitename.ru/www/media'
+MEDIA_ROOT = '/home/u67523/posuda-pls.ru/www/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/u67523/sitename.ru/www/static'
+STATIC_ROOT = '/home/u67523/posuda-pls.ru/www/static'
 STATIC_URL = '/static/'
 
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
