@@ -25,7 +25,7 @@ SECRET_KEY = '=!jf6vyw9-2zg&d#2pdw9t4%qb59so@#fsqsi4dxb$3&asmxbs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.posuda-pls.ru','posuda-pls.ru',]
 
 
 # Application definition
