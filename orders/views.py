@@ -19,7 +19,7 @@ from django.views.generic import View
 from django.template.loader import get_template
 
 from.utils import render_to_pdf
-from rustam2.settings import local
+
 import os
 from django.shortcuts import get_object_or_404
 
