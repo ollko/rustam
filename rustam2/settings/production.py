@@ -143,11 +143,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'uploads')
+# MEDIA_ROOT = os.path.join(BASE_DIR,'uploads')
 
 CART_SESSION_ID = 'cart'
+
+MEDIA_ROOT = '/home/u67523/sitename.ru/www/media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = '/home/u67523/sitename.ru/www/static'
+STATIC_URL = '/static/'
 
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -167,3 +172,4 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'korotkaya.olga@yandex.ru'
+
