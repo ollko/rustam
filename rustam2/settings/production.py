@@ -86,9 +86,18 @@ WSGI_APPLICATION = 'rustam2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'u67523',
+        'USER': 'u67523',
+        'PASSWORD': 'mpKYoiAunR3bUtY',
+        'HOST': 'localhost',
+        'OPTIONS':{
+             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+             
+             'charset': 'utf8',
+            
+            
+        }
 }
 
 
