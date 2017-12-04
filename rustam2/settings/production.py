@@ -96,7 +96,7 @@ DATABASES = {
              
              'charset': 'utf8',
             
-            
+            }
         }
 }
 
