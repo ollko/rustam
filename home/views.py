@@ -23,7 +23,6 @@ class HomeView(ListView, CategoryListMixin):
 		context            = super(HomeView, self).get_context_data(**kwargs)
 		context['cart_product_form'] = CartAddProductForm()
 
-		print 'context=',context
 		return context
 
 class AboutView(TemplateView, CategoryListMixin):

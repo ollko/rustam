@@ -31,6 +31,7 @@ class ProductList(ListView, CategoryListMixin):
 		if 'category_slug' in self.kwargs:
 			current_cat = get_object_or_404(Category, slug= self.kwargs['category_slug'])
 			if current_cat.is_leaf_node():
+
 				return Product.objects.filter(category__slug = self.kwargs['category_slug'])
 			else:
 				res=[] 

@@ -7,6 +7,8 @@
 
 <h3>Популярные товары:</h3>
 <div class="row">
-	{% include 'base/_product_cards.html' %}
+	{% for product in products %}
+		{% include 'base/_product_cards.html' %}
+	{% endfor %}
 </div><!--/row-->
 {% endblock %}
