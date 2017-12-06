@@ -25,8 +25,12 @@ def write_pdf_to_disk(template_src, filename, context_dict={}):
 	template = get_template(template_src)
 	# context = Context(context_dict)
 	html  = template.render(context_dict)
+	# print 'filename=',filename
 	result = open(filename, 'wb') # Changed from file to filename
+	# print 'result=',result
 	pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
+	# print 'pdf=',pdf
+	
 	result.close()
 
 
