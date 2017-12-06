@@ -1,7 +1,7 @@
-User-agent: YandexBot
+User-agent: *
 Allow: /
-Disallow: /admin # блокирует доступ к страницам, нающимся с /admin
-Disallow: /cart # блокирует доступ к страницам, нающимся с /cart
+Disallow: /admin 
+Disallow: /cart 
 Disallow: /accounts/gestemail$
 Disallow: /orders
 Disallow: /catalog$
