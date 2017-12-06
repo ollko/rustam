@@ -139,6 +139,12 @@ a.a-cart:hover{
 }
 /* /POPOVER CART*/
 
+/* GRAND CART*/
+td.cart-product-img {
+    width: 15%;
+  }
+/* /GRAND CART*/
+
 /*SIDE MENU*/
 #sidebar .list-group-item.list-group-item-action:hover{
 	background-color: #154b98;

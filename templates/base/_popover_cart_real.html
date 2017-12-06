@@ -50,7 +50,7 @@
       </tr>
       <tr>
         <td colspan="2"><a href="{% url 'cart:CartDetail' %}" role="button" class="btn btn-secondary btn-sm " >Перейти в корзину</a></td>
-        <td colspan="3"><a href="{% url 'accounts:CreateGestEmail' %}" role="button" class="btn btn-primary btn-sm">Оформить заказ</a></td>
+        <td colspan="3"><a href="#{% comment %}{% url 'accounts:CreateGestEmail' %}{% endcomment %}" role="button" class="btn btn-primary btn-sm">Оформить заказ</a></td>
       </tr>
     </tbody>
   </table>
