@@ -63,7 +63,15 @@ div.no-product-img{
 .col-product{
     padding-bottom: 15px;
     
-  }
+}
+  img.product-card-img-top{
+  padding-top: 1.25rem;
+}
+
+a.a-my-card:hover{
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
 
   div.card.my-card {
@@ -92,9 +100,6 @@ div.no-product-img{
     padding-bottom: 7px;
     
   }
-}
-img.product-card-img-top{
-  padding-top: 1.25rem;
 }
 
 
@@ -134,6 +139,8 @@ div.no-product-img-cart{
   padding: 1em 0;
   width: 200px;
 }
+
+
 a.a-cart:hover{
   text-decoration: none;
 }
