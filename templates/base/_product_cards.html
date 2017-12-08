@@ -2,7 +2,7 @@
 
 
 
-<div class="col-6 col-lg-4 col-product">
+<div class="col-6 col-lg-2 col-product">
 		<div class="card my-card" >
 			<a class="a-my-card" href="{{ product.get_absolute_url }}">
 				
@@ -23,7 +23,7 @@
 					<div class="input-group">
 						{{ cart_product_form }}
 						{% csrf_token %}
-						<input type="submit" class="btn btn-primary btn-sm" value="В корзину">
+						<input type="submit" class="btn btn-primary btn-sm my-btn-card" value="В корзину">
 					</div>
 				</form>			
 			</div>
