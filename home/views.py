@@ -17,7 +17,7 @@ from cart.forms import CartAddProductForm
 class HomeView(ListView, CategoryListMixin):
 	model = Product
 	template_name = "home/home.html"
-	queryset = Product.objects.all().order_by('-created')[:3]
+	queryset = Product.objects.all().order_by('-created')[:6]
 	context_object_name = 'products'
 	def get_context_data(self, **kwargs):
 		context            = super(HomeView, self).get_context_data(**kwargs)
