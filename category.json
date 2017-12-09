@@ -1,0 +1,860 @@
+[
+{
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+        "name": "\u041e\u0434\u043d\u043e\u0440\u0430\u0437\u043e\u0432\u0430\u044f \u043f\u043e\u043b\u0443\u0434\u0430 \u0438 \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0430",
+        "slug": "odnorazovaia-poluda-i-upakovka",
+        "parent": null,
+        "lft": 1,
+        "rght": 16,
+        "tree_id": 4,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+        "name": "\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u044b",
+        "slug": "konteinery",
+        "parent": 1,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+        "name": "\u041a\u043e\u0440\u043e\u0431\u043a\u0438 \u043f\u043e\u0434 \u043f\u0438\u0446\u0446\u0443",
+        "slug": "korobki-pod-pitstsy",
+        "parent": 1,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+        "name": "\u041b\u0430\u043d\u0447-\u0431\u043e\u043a\u0441\u044b",
+        "slug": "lanch-boksy",
+        "parent": 1,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 5,
+    "fields": {
+        "name": "\u041f\u043e\u0434\u043b\u043e\u0436\u043a\u0438",
+        "slug": "podlozhki",
+        "parent": 1,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 6,
+    "fields": {
+        "name": "\u041f\u0440\u0435\u0441\u0441 \u0431\u0430\u043d\u043a\u0438",
+        "slug": "press-banki",
+        "parent": 1,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 7,
+    "fields": {
+        "name": "\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440\u044b \u0440\u0430\u043a\u0443\u0448\u043a\u0430",
+        "slug": "konteinery-rakushka",
+        "parent": 1,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 8,
+    "fields": {
+        "name": "\u042f\u0438\u0447\u043d\u0430\u044f \u0443\u043f-\u043a\u0430",
+        "slug": "iaichnaia-up-ka",
+        "parent": 1,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 9,
+    "fields": {
+        "name": "\u041f\u0430\u043a\u0435\u0442\u044b",
+        "slug": "pakety",
+        "parent": null,
+        "lft": 1,
+        "rght": 16,
+        "tree_id": 5,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 10,
+    "fields": {
+        "name": "\u041f\u0430\u043a\u0435\u0442\u044b-\u043c\u0430\u0439\u043a\u0430",
+        "slug": "pakety-maika",
+        "parent": 9,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 11,
+    "fields": {
+        "name": "\u041c\u0435\u0448\u043a\u0438 \u0434\u043b\u044f \u043c\u0443\u0441\u043e\u0440\u0430",
+        "slug": "meshki-dlia-musora",
+        "parent": 9,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 12,
+    "fields": {
+        "name": "\u0441 \u0432\u044b\u0440\u0443\u0431\u043d\u043e\u0439 \u0440\u0443\u0447\u043a\u043e\u0439",
+        "slug": "s-vyrubnoi-ruchkoi",
+        "parent": 9,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 13,
+    "fields": {
+        "name": "\u043f\u0430\u043a\u0435\u0442\u044b \u0432 \u0440\u0443\u043b\u043e\u043d\u0435",
+        "slug": "pakety-v-rulone",
+        "parent": 9,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 14,
+    "fields": {
+        "name": "\u0441\u0443\u043c\u043a\u0438",
+        "slug": "sumki",
+        "parent": 9,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 15,
+    "fields": {
+        "name": "\u0444\u0430\u0441\u043e\u0432\u043a\u0430",
+        "slug": "fasovka",
+        "parent": 9,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 16,
+    "fields": {
+        "name": "\u0441\u0435\u0442\u043a\u0430 \u0434\u043b\u044f \u043e\u0432\u043e\u0449\u0435\u0439",
+        "slug": "setka-dlia-ovoshchei",
+        "parent": 9,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 17,
+    "fields": {
+        "name": "\u043f\u043b\u0435\u043d\u043a\u0430",
+        "slug": "plenka",
+        "parent": null,
+        "lft": 1,
+        "rght": 10,
+        "tree_id": 6,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 18,
+    "fields": {
+        "name": "\u043f\u043e\u043b\u0438\u044d\u0442\u0438\u043b\u0435\u043d",
+        "slug": "polietilen",
+        "parent": 17,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 19,
+    "fields": {
+        "name": "\u0441\u043a\u043e\u0442\u0447",
+        "slug": "skotch",
+        "parent": 17,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 20,
+    "fields": {
+        "name": "\u0441\u0442\u0440\u0435\u0439\u0447",
+        "slug": "streich",
+        "parent": 17,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 21,
+    "fields": {
+        "name": "\u0444\u043e\u043b\u044c\u0433\u0430",
+        "slug": "folga",
+        "parent": 17,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 22,
+    "fields": {
+        "name": "\u041f\u043e\u0441\u0443\u0434\u0430",
+        "slug": "posuda",
+        "parent": null,
+        "lft": 1,
+        "rght": 20,
+        "tree_id": 7,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 23,
+    "fields": {
+        "name": "\u0431\u0430\u043a\u0438, \u0444\u043b\u044f\u0433\u0438",
+        "slug": "baki-fliagi",
+        "parent": 22,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 24,
+    "fields": {
+        "name": "\u0441\u0442\u0430\u043a\u0430\u043d\u044b, \u0447\u0430\u0448\u043a\u0438",
+        "slug": "stakany-chashki",
+        "parent": 22,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 25,
+    "fields": {
+        "name": "\u0411\u0443\u0442\u044b\u043b\u043a\u0438 \u041f\u042d\u0422",
+        "slug": "butylki-pet",
+        "parent": 22,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 26,
+    "fields": {
+        "name": "\u0432\u0435\u0434\u0440\u0430",
+        "slug": "vedra",
+        "parent": 22,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 27,
+    "fields": {
+        "name": "\u0437\u0443\u0431\u043e\u0447\u0438\u0441\u0442\u043a\u0438",
+        "slug": "zubochistki",
+        "parent": 22,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 28,
+    "fields": {
+        "name": "\u043a\u0440\u044b\u0448\u043a\u0438",
+        "slug": "kryshki",
+        "parent": 22,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 29,
+    "fields": {
+        "name": "\u0441\u0442\u043e\u043b\u043e\u0432\u044b\u0435 \u043f\u0440\u0438\u0431\u043e\u0440\u044b",
+        "slug": "stolovye-pribory",
+        "parent": 22,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 30,
+    "fields": {
+        "name": "\u0442\u0430\u0440\u0435\u043b\u043a\u0438",
+        "slug": "tarelki",
+        "parent": 22,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 31,
+    "fields": {
+        "name": "\u043d\u0430\u0431\u043e\u0440\u044b",
+        "slug": "nabory",
+        "parent": 22,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 32,
+    "fields": {
+        "name": "\u0411\u0443\u043c\u0430\u0436\u043d\u0430\u044f \u043f\u0440\u043e\u0434\u0443\u043a\u0446\u0438\u044f",
+        "slug": "bumazhnaia-produktsiia",
+        "parent": null,
+        "lft": 1,
+        "rght": 12,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 33,
+    "fields": {
+        "name": "\u0441\u0430\u043b\u0444\u0435\u0442\u043a\u0438",
+        "slug": "salfetki",
+        "parent": 32,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 34,
+    "fields": {
+        "name": "\u0442\u0443\u0430\u043b\u0435\u0442\u043d\u0430\u044f \u0431\u0443\u043c\u0430\u0433\u0430",
+        "slug": "tualetnaia-bumaga",
+        "parent": 32,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 35,
+    "fields": {
+        "name": "\u0431\u0443\u043c\u0430\u0436\u043d\u044b\u0435 \u043f\u043e\u043b\u043e\u0442\u0435\u043d\u0446\u0430",
+        "slug": "bumazhnye-polotentsa",
+        "parent": 32,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 36,
+    "fields": {
+        "name": "\u043f\u0435\u0440\u0433\u0430\u043c\u0435\u043d\u0442",
+        "slug": "pergament",
+        "parent": 32,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 37,
+    "fields": {
+        "name": "\u0442\u0440\u044f\u043f\u043a\u0438 \u0434\u043b\u044f \u0443\u0431\u043e\u0440\u043a\u0438",
+        "slug": "triapki-dlia-uborki",
+        "parent": 32,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 38,
+    "fields": {
+        "name": "\u0411\u044b\u0442\u043e\u0432\u0430\u044f \u0445\u0438\u043c\u0438\u044f",
+        "slug": "bytovaia-khimiia",
+        "parent": null,
+        "lft": 1,
+        "rght": 20,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 39,
+    "fields": {
+        "name": "\u043c\u044b\u043b\u043e",
+        "slug": "mylo",
+        "parent": 38,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 40,
+    "fields": {
+        "name": "\u0417\u0443\u0431\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430",
+        "slug": "zubnaia-pasta",
+        "parent": 38,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 41,
+    "fields": {
+        "name": "\u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u043e\u0442 \u043d\u0430\u0441\u0435\u043a\u043e\u043c\u044b\u0445",
+        "slug": "sredstva-ot-nasekomykh",
+        "parent": 38,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 42,
+    "fields": {
+        "name": "\u043c\u043e\u044e\u0449\u0438\u0435 \u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u0434\u043b\u044f \u0434\u043e\u043c\u0430",
+        "slug": "moiushchie-sredstva",
+        "parent": 38,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 43,
+    "fields": {
+        "name": "\u0434\u043b\u044f \u0441\u0442\u0438\u0440\u043a\u0438 \u0431\u0435\u043b\u044c\u044f",
+        "slug": "dlia-stirki-belia",
+        "parent": 38,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 44,
+    "fields": {
+        "name": "\u0414\u0435\u0437\u043e\u0434\u043e\u0440\u0430\u043d\u0442\u044b \u0438 \u043e\u0441\u0432\u0435\u0436\u0438\u0442\u0435\u043b\u0442 \u0432\u043e\u0437\u0434\u0443\u0445\u0430",
+        "slug": "dezodoranty-i-osvezhitelt-vozdukha",
+        "parent": 38,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 45,
+    "fields": {
+        "name": "\u0411\u0430\u043b\u044c\u0437\u0430\u043c\u044b",
+        "slug": "balzamy",
+        "parent": 38,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 46,
+    "fields": {
+        "name": "\u0448\u0430\u043c\u043f\u0443\u043d\u0438 \u0438 \u0433\u0435\u043b\u0438 \u0434/\u0434",
+        "slug": "shampuni-i-geli-dd",
+        "parent": 38,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 47,
+    "fields": {
+        "name": "\u0412\u0430\u0442\u043d\u044b\u0435 \u0434\u0438\u0441\u043a\u0438 \u0438 \u043f\u0430\u043b\u043e\u0447\u043a\u0438",
+        "slug": "vatnye-diski-i-palochki",
+        "parent": 38,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 48,
+    "fields": {
+        "name": "\u0422\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u0442\u043e\u0440\u0433\u043e\u0432\u043b\u0438",
+        "slug": "tovary-dlia-torgovli",
+        "parent": null,
+        "lft": 1,
+        "rght": 12,
+        "tree_id": 10,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 49,
+    "fields": {
+        "name": "\u0446\u0435\u043d\u043d\u0438\u043a\u0438 \u0438 \u0446\u0435\u043d\u043e\u0434\u0435\u0440\u0436\u0430\u0442\u0435\u043b\u0438",
+        "slug": "tsenniki-i-tsenoderzhateli",
+        "parent": 48,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 10,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 50,
+    "fields": {
+        "name": "\u0442\u043e\u0432\u0430\u0440\u043d\u044b\u0435 \u0447\u0435\u043a\u0438",
+        "slug": "tovarnye-cheki",
+        "parent": 48,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 10,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 51,
+    "fields": {
+        "name": "\u043a\u0430\u0441\u0441\u043e\u0432\u0430\u044f \u043b\u0435\u043d\u0442\u0430",
+        "slug": "kassovaia-lenta",
+        "parent": 48,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 10,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 52,
+    "fields": {
+        "name": "\u043d\u0430\u043a\u043b\u0430\u0434\u043d\u044b\u0435",
+        "slug": "nakladnye",
+        "parent": 48,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 10,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 53,
+    "fields": {
+        "name": "\u0441\u0447\u0435\u0442\u0430 \u0434\u043b\u044f \u0440\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u043e\u0432",
+        "slug": "scheta-dlia-restoranov",
+        "parent": 48,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 10,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 54,
+    "fields": {
+        "name": "\u0425\u043e\u0437\u0442\u043e\u0432\u0430\u0440\u044b",
+        "slug": "khoztovary",
+        "parent": null,
+        "lft": 1,
+        "rght": 12,
+        "tree_id": 11,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 55,
+    "fields": {
+        "name": "\u043f\u0435\u0440\u0447\u0430\u0442\u043a\u0438",
+        "slug": "perchatki",
+        "parent": 54,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 56,
+    "fields": {
+        "name": "\u0435\u0436\u0438\u043a\u0438 \u0438 \u0435\u0440\u0448\u0438\u043a\u0438",
+        "slug": "ezhiki-i-ershiki",
+        "parent": 54,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 57,
+    "fields": {
+        "name": "\u0449\u0435\u0442\u043a\u0438, \u043c\u0435\u0442\u043b\u044b, \u0441\u043e\u0432\u043a\u0438, \u0448\u0432\u0430\u0431\u0440\u044b",
+        "slug": "shchetki-metly-sovki-shvabry",
+        "parent": 54,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 58,
+    "fields": {
+        "name": "\u0413\u0443\u0431\u043a\u0438",
+        "slug": "gubki",
+        "parent": 54,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 59,
+    "fields": {
+        "name": "\u043f\u043e\u043b\u043e\u0432\u044b\u0435 \u0442\u0440\u044f\u043f\u043a\u0438",
+        "slug": "polovye-triapki",
+        "parent": 54,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 60,
+    "fields": {
+        "name": "\u0422\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u0434\u043e\u043c\u0430",
+        "slug": "tovary-dlia-doma",
+        "parent": null,
+        "lft": 1,
+        "rght": 12,
+        "tree_id": 9,
+        "level": 0
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 61,
+    "fields": {
+        "name": "\u0431\u0430\u0442\u0430\u0440\u0435\u0439\u043a\u0438",
+        "slug": "batareiki",
+        "parent": 60,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 9,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 62,
+    "fields": {
+        "name": "\u0441\u0440\u0435\u0434\u0441\u0442\u0432\u0430 \u0434\u043b\u044f \u043e\u0431\u0443\u0432\u0438",
+        "slug": "sredstva-dlia-obuvi",
+        "parent": 60,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 9,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 63,
+    "fields": {
+        "name": "\u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u0448\u0430\u0448\u043b\u044b\u043a\u043e\u0432",
+        "slug": "tovary-dlia-shashlykov",
+        "parent": 60,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 9,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 64,
+    "fields": {
+        "name": "\u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u0431\u0440\u0438\u0442\u044c\u044f",
+        "slug": "tovary-dlia-britia",
+        "parent": 60,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 9,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 65,
+    "fields": {
+        "name": "\u0440\u0430\u0437\u043d\u043e\u0435",
+        "slug": "raznoe",
+        "parent": 60,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 9,
+        "level": 1
+    }
+},
+{
+    "model": "shop.category",
+    "pk": 66,
+    "fields": {
+        "name": "\u041a\u0430\u043d\u0446\u0442\u043e\u0432\u0430\u0440\u044b",
+        "slug": "kantstovary",
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 3,
+        "level": 0
+    }
+}
+]
