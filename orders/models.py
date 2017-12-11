@@ -85,7 +85,7 @@ def post_save_receiver_order_model(sender, instance, created, **kwargs):
 		# writing pdf to disk:
 		order_id = instance.id
 		# filename = os.path.join(BASE_DIR,"orders/tmp/Order_%s.pdf")%(order_id)
-		filename = "my_Order.pdf"
+		filename = '/home/u67523/posuda-pls.ru/rustam2/My_order.pdf'
 		print 'filename=',filename
 		context = {
 				'path_to_fonts':os.path.join(BASE_DIR,'static/fonts'),
