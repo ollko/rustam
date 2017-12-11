@@ -39,7 +39,8 @@ class GeneratePDF(View):
 		current_order = get_object_or_404(Order, pk=kwargs['pk'])
 
 		context = {
-			'path_to_fonts':os.path.join(BASE_DIR,'static/fonts'),
+			# 'path_to_fonts':os.path.join(BASE_DIR,'static/fonts'),
+			'path_to_fonts': BASE_DIR,
 			'order': current_order,
 		}
 		

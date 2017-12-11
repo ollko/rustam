@@ -9,6 +9,7 @@
             @media print {
                 @font-face {
                     font-family: sans-serif;
+                    /*src: url("{{path_to_fonts}}/arial.ttf");*/
                     src: url("{{path_to_fonts}}/arial.ttf");
                 }
             }   
@@ -83,6 +84,7 @@
         <div class='wrapper'>
             <div class='header'>
                 <p class='title'>Заказ # {{order.pk}}</p>
+                {% static 'fonts/arial.ttf' %}
             </div>
         <div>
         <div class='details'>
