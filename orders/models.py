@@ -84,8 +84,9 @@ def post_save_receiver_order_model(sender, instance, created, **kwargs):
 		
 		# writing pdf to disk:
 		order_id = instance.id
-		filename = os.path.join(BASE_DIR,"orders/tmp/Order_%s.pdf")%(order_id)
-		# print 'filename=',filename
+		# filename = os.path.join(BASE_DIR,"orders/tmp/Order_%s.pdf")%(order_id)
+		filename = "my_Order.pdf"
+		print 'filename=',filename
 		context = {
 				'path_to_fonts':os.path.join(BASE_DIR,'static/fonts'),
 				'order': instance,
@@ -97,7 +98,7 @@ def post_save_receiver_order_model(sender, instance, created, **kwargs):
 		send_pdf_order(order_id, filename, addr_to)
 
 		path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'tmp/Order_%s.pdf' %(order_id))
-		os.remove(path)
+		# os.remove(path)
 		
 		current_session.delete()
 
