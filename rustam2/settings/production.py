@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '=!jf6vyw9-2zg&d#2pdw9t4%qb59so@#fsqsi4dxb$3&asmxbs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['www.posuda-pls.ru','posuda-pls.ru',]
 
