@@ -3,6 +3,10 @@ db.sqlite3
 uploads/
 orders/tmp/
 
+inisial-list-from-rustam.xls
+list-of-products.xls
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
