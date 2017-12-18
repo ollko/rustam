@@ -22,7 +22,7 @@
       {% for item in cart %}
         {% with product=item.product %}
           <tr>
-            <td class='cart-product-img'>
+            <td class='cart-product-img product-row-item'>
               <a class='a-cart' href="{{ product.get_absolute_url }}">
                 {% if product.image %}
                   <img class="card-img-top product-card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -32,8 +32,8 @@
 
               </a>
             </td>
-            <td>{{ product.name }}</td>
-            <td>
+            <td class="product-row-item">{{ product.name }}</td>
+            <td class="product-row-item">
               <form action="{% url 'cart:CartAdd' product.id %}" method="post" class="add">
                 <div class="input-group">
                   {{ item.update_quantity_form.quantity }}
@@ -44,21 +44,20 @@
               </form>
             </td>
             
-            <td><a href="{% url 'cart:CartRemove' product.id %}">Удалить</a></td>
-            <td >{{ item.price }} руб.</td>
-            <td >{{ item.total_price }} руб.</td>
+            <td class="product-row-item"><a href="{% url 'cart:CartRemove' product.id %}">Удалить</a></td>
+            <td class="product-row-item">{{ item.price }} руб.</td>
+            <td class="product-row-item">{{ item.total_price }} руб.</td>
           </tr>
         {% endwith %}
       {% endfor %}
         <tr class="total">
-          <td>Всего:</td>
-          <td colspan="4"></td>
+          <td colspan="5">Всего:</td>
           <td class="num">{{ cart.get_total_price }} руб.</td>
         </tr>
     </tbody>
   </table>
   <p class="text-right">
-    <a href="{% url 'home:home' %}" class="btn btn-secondary" role="button">Продолжить Шопинг</a>
-    <a href="{% url 'accounts:CreateGestEmail' %}" class="btn btn-primary" role="button">Оформить заказ</a>
+    <a href="{% url 'home:home' %}" class="btn btn-secondary my-cart-btn" role="button">Продолжить Шопинг</a>
+    <a href="{% url 'accounts:CreateGestEmail' %}" class="btn btn-primary my-cart-btn" role="button">Оформить заказ</a>
   </p>
 {% endblock %}
