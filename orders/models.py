@@ -96,9 +96,7 @@ def post_save_receiver_order_model(sender, instance, created, **kwargs):
 
 		send_pdf_order(order_id, filename, addr_to)
 
-		# path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'tmp/Order_%s.pdf' %(order_id))
-		path = 'Order_%s.pdf' %(order_id)
-		# os.remove(path)
+		os.remove(filename)
 		
 		current_session.delete()
 
