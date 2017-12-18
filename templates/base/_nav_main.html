@@ -6,7 +6,7 @@
     <ul class="navbar-nav text-md-center nav-justified w-100">
     {% url 'home:home' as home %}
       <li class="nav-item {% if home == current_url %}active{% endif %}">
-        <a class="nav-link" href="{% url 'home:home' %}"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Главная <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home:home' %}">&nbsp; Главная <span class="sr-only">(current)</span></a>
       </li>
     {% url 'home:about' as about %}  
       <li class="nav-item {% if about == current_url %}active{% endif %}">
