@@ -12,7 +12,7 @@ from .models import Category, Product
 
 class ProductAdmin(admin.ModelAdmin):
     model = Product
-    list_display = ('name', 'category')
+    list_display = ('id', 'name', 'category')
     list_filter = (('category', TreeRelatedFieldListFilter),)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
