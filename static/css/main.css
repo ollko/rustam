@@ -285,3 +285,9 @@ div.my-catalog{
 
 }
 /* /SIDE MENU*/
+
+/* FORM VALIDATION ERROR TEXT COLOR*/
+.form-group.has-error span.help-block{
+  color: red;
+}
+/* /FORM VALIDATION ERROR TEXT COLOR*/

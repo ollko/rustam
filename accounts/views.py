@@ -5,8 +5,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic.edit import CreateView
-from accounts.models import GuestEmail
+from .models import GuestEmail
+from .forms import GuestEmailForm
+
 
 class CreateGestEmail(CreateView):
-	model = GuestEmail
-	fields = ['email']
+	model 		= GuestEmail
+	form_class 	= GuestEmailForm
+	

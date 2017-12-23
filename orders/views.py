@@ -33,6 +33,7 @@ try:
 except:
 	pass
 
+
 class GeneratePDF(View):
 	def get(self, request, *args, **kwargs):
 		template = get_template('other/invoice.html')
@@ -60,9 +61,13 @@ class GeneratePDF(View):
 		return HttpResponse('Not found')
 
 
+from forms import OrderCreateForm
+
 class CreateOrderView(CreateView):
-	model = Order
-	fields = ['address','postal_code','city']
+	model 		= Order
+	form_class 	= OrderCreateForm
+
+	
 
 	def form_valid(self, form):
 		"""

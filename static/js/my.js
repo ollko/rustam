@@ -16,3 +16,25 @@ $(this).popover({
 });
 
 });
+
+// SIPPING FORM
+
+$('input:radio[name = "shipping"]').on("click", function(){
+		
+		$("label[for='id_address']").parent().toggle();
+		$("label[for='id_postal_code']").parent().toggle();
+		$("label[for='id_city']").parent().toggle();
+});
+
+// SIPPING FORM
+
+// FORM
+
+// После клика по input окну если есть подсказка, она исчезает, 
+
+$( 'input.form-control' ).on( 'select click', function( evt ) {
+  if ($(evt.target).val()!==0){
+    $(evt.target).val('');
+	}
+  })
+// FORM

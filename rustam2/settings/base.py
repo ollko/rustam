@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mptt',
     'bootstrapform',
     'xhtml2pdf',
+    'phonenumber_field',
     
     'home',
     'shop',

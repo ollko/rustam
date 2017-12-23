@@ -30,28 +30,47 @@ except:
 
 from.utils import write_pdf_to_disk, send_pdf_order
 
+from django.forms import RadioSelect
+
+
 
 def postal_code_validator(value):
 	if value.isdigit and len(value)==6:
 		return value
 	raise ValidationError('Некоректный почтовый код')	
-	
+
+SHIPPINGCHOICES = (
+	('0', 'Доставка в пределах Восточного Округа Москвы'), 
+	('1', 'Самовывоз'), 
+)
 class Order(models.Model):
     
-	guest_email = models.ForeignKey(GuestEmail,verbose_name='Email')
-	session_key = models.CharField(verbose_name='Ключ текущей сессии', max_length=32, default='000', blank=True)
-	address =  models.CharField(verbose_name='Адрес', max_length=250, default = None,)
-	postal_code = models.CharField(verbose_name='Почтовый код', max_length=20, default = None,
-									validators = [postal_code_validator],)
-	city = models.CharField(verbose_name='Город', max_length=100, default = None,)
-	created = models.DateTimeField(verbose_name='Создан', auto_now_add=True)
-	updated = models.DateTimeField(verbose_name='Обновлен', auto_now=True)
+	guest_email = models.ForeignKey(GuestEmail,verbose_name = 'Email')
+	session_key = models.CharField(verbose_name = 'Ключ текущей сессии', 
+									max_length = 32, default='000', blank = True,)
+	shipping 	= models.CharField(verbose_name = 'Выберите способ доставки:', max_length = 1, 
+									choices = SHIPPINGCHOICES, default = '0', )
+
+
+	address 	= models.CharField(verbose_name='Адрес', max_length=250, 
+									null = True, blank = True, default = None)
+	postal_code = models.CharField(verbose_name='Почтовый код', max_length=20,
+									validators = [postal_code_validator],
+									null = True, blank = True, default = None,)
+	city 		= models.CharField(verbose_name='Город', max_length=100, 
+									null = True, blank = True, default = None,)
+	created 	= models.DateTimeField(verbose_name='Создан', auto_now_add=True,)
+	updated 	= models.DateTimeField(verbose_name='Обновлен', auto_now=True,)
 	# paid = models.BooleanField(verbose_name='Оплачен', default=False)
 
 	class Meta:
-		ordering = ('-created', )
-		verbose_name = 'Заказ'
+		ordering 			= ('-created', )
+		verbose_name 		= 'Заказ'
 		verbose_name_plural = 'Заказы'
+
+		# widgets 	= 	{
+		# 			'shipping': RadioSelect,
+		# 			}
 
 	def __unicode__(self):
 		return 'Заказ: {}'.format(self.id)

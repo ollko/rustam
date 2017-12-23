@@ -7,11 +7,16 @@ from django.db import models
 
 from django.urls import reverse
 # Create your models here.
+
+from phonenumber_field.modelfields import PhoneNumberField
+
 class GuestEmail(models.Model):
-	email       = models.EmailField(verbose_name='Ваш email:',)
-	active      = models.BooleanField(default=True)
-	update      = models.DateTimeField(auto_now=True)
-	timestamp   = models.DateTimeField(auto_now_add=True)
+
+	email        = models.EmailField(verbose_name='Ваш email:',)
+	guest_phone  = PhoneNumberField(verbose_name='Ваш телефон:', default=None, null=True)
+	active       = models.BooleanField(default=True)
+	update       = models.DateTimeField(auto_now=True)
+	timestamp    = models.DateTimeField(auto_now_add=True)
 
 	class Meta:
 		verbose_name = 'Гостевой email'
