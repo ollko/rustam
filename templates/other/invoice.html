@@ -90,7 +90,11 @@
         <div>
         <div class='details'>
         
-            Информация о клиенте: {{ order.guest_email.email }}<br/>
+            Информация о клиенте:<br/>
+            {{ order.guest_email.email }}<br/>
+            {{ order.guest_email.guest_phone }}<br/>
+            Способ доставки: <br/>
+            Адрес доставки: <br/>
             Сумма к оплате: {{order.get_total_cost}}  руб.<br/>
             Дата заказа: {{ order.created }}
             <hr class='hrItem' />

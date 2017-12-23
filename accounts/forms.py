@@ -26,7 +26,7 @@ class GuestEmailForm(forms.ModelForm):
 		
 	def clean_email(self):
 		email = self.cleaned_data.get("email")
-		print 'email=',email
+		
 		if email == "vasia@yandex.ru":
 			raise forms.ValidationError("Введите корректный адрес.")
 		return email
