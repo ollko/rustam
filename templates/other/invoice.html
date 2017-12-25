@@ -94,7 +94,7 @@
             {{ order.guest_email.email }}<br/>
             {{ order.guest_email.guest_phone }}<br/>
             <div>Способ доставки: <span id="shipping">{{ order.shipping }}</span></div>
-            <div>Адрес доставки: <span id="address">{{ order.city }}</span></div>
+            <div>Адрес доставки: <span id="address">{{ order.address }}</span></div>
             Сумма к оплате: {{order.get_total_cost}}  руб.<br/>
             Дата заказа: {{ order.created }}
             <hr class='hrItem' />

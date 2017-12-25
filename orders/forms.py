@@ -32,8 +32,8 @@ class OrderCreateForm(forms.ModelForm):
 	def clean_address(self):
 		shipping = self.cleaned_data.get("shipping")
 		address = self.cleaned_data.get("address")
-		
-		if shipping=='0' and address==None :
+		if shipping==u'с доставкой' and address==None :
+			
 			raise forms.ValidationError("Введите адрес!")
 		return address
 
@@ -41,7 +41,7 @@ class OrderCreateForm(forms.ModelForm):
 		shipping = self.cleaned_data.get("shipping")
 		postal_code = self.cleaned_data.get("postal_code")
 		
-		if shipping=='0' and postal_code==None :
+		if shipping==u'с доставкой' and postal_code==None :
 			raise forms.ValidationError("Введите почтовый код!")
 		return postal_code
 
@@ -49,6 +49,6 @@ class OrderCreateForm(forms.ModelForm):
 		shipping = self.cleaned_data.get("shipping")
 		city = self.cleaned_data.get("city")
 		
-		if shipping=='0' and city==None :
+		if shipping==u'с доставкой' and city==None :
 			raise forms.ValidationError("Введите город!")
 		return city

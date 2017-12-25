@@ -40,8 +40,8 @@ def postal_code_validator(value):
 	raise ValidationError('Некоректный почтовый код')	
 
 SHIPPINGCHOICES = (
-	('Доставка в пределах Восточного Округа', 'Доставка в пределах Восточного Округа Москвы'), 
-	('Самовывоз', 'Самовывоз'), 
+	('с доставкой', 'Доставка в пределах Восточного Округа Москвы'), 
+	('самовывоз', 'Самовывоз'), 
 )
 class Order(models.Model):
     
@@ -49,7 +49,7 @@ class Order(models.Model):
 	session_key = models.CharField(verbose_name = 'Ключ текущей сессии', 
 									max_length = 32, default='000', blank = True,)
 	shipping 	= models.CharField(verbose_name = 'Выберите способ доставки:', max_length = 50, 
-									choices = SHIPPINGCHOICES, default = '0', )
+									choices = SHIPPINGCHOICES, default = 'с доставкой', )
 
 
 	address 	= models.CharField(verbose_name='Адрес', max_length=250, 
