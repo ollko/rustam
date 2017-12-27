@@ -18,7 +18,7 @@
 			</a>
 			<div class="card-body my-product-card">
 				<p class="card-title text-dark text-right product-card-title">{{ product.name }}</p>
-				
+				 <p class="card-text text-right product-card-title">{{ product.price }} руб. {% if product.typeprice%} за {{ product.typeprise }} {% endif %}</p>
 				<form class = "float-right" action="{% url 'cart:CartAdd' product.id %}" method="post">
 					<div class="input-group">
 						{{ cart_product_form }}

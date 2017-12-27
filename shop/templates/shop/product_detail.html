@@ -46,7 +46,9 @@
 		
 			<div class="card-body">
 				<h6 class="card-title">{{ product.name }}</h6>
-				<p class="card-text">{{ product.price }} pyб.</p>
+				{% if product.packaging %}<p class="card-text">{{ product.packaging }}</p>{% endif %}
+				<p class="card-text ">{{ product.price }} руб. {% if product.typeprice%} за {{ product.typeprise }} {% endif %}</p>
+				{% if product.manufacture %}<p class="card-text">Изготовитель: {{ product.manufacture }}</p>{% endif %}
 				<form action="{% url "cart:CartAdd" product.id %}" method="post">
 					<div class="input-group">
 						{{ cart_product_form }}

@@ -32,17 +32,23 @@ class Category(MPTTModel):
 
 
 class Product(models.Model):
-    category = TreeForeignKey('Category', null=True, blank=True, related_name='cat', verbose_name=u"Категория")
-    name = models.CharField(max_length=200, db_index=True, verbose_name=u"Название")
-    slug = models.SlugField(max_length=200, db_index=True, default='page-slug', blank=True)
-    image = models.ImageField(upload_to='%Y/%m/',
-                                            blank=True, null=True, default=None, verbose_name=u"Изображение товара")
+    category    = TreeForeignKey('Category', null=True, blank=True, db_index=True, related_name='cat', verbose_name=u"Категория")
+    name        = models.CharField(max_length=200, db_index=True, verbose_name=u"Название")
+    slug        = models.SlugField(max_length=200, db_index=True, default='page-slug', blank=True)
+    image       = models.ImageField(upload_to='%Y/%m/',blank=True, null=True, default=None,
+                                 verbose_name=u"Изображение товара")
+    packaging   = models.CharField(max_length=20, verbose_name=u"Упаковка", blank=True, null=True, default=None)
+
     # description = models.TextField(blank=True, verbose_name="Описание")
-    article = models.CharField(max_length=13, db_index=True, default='0000000000000')
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u"Цена")
-    available = models.BooleanField(default=True, verbose_name=u"Доступен")
-    created = models.DateTimeField(auto_now_add=True, db_index=True)
-    updated = models.DateTimeField(auto_now=True)
+    article     = models.CharField(max_length=13, db_index=True, default='0000000000000')
+    price       = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u"Цена")
+    typeprice   = models.CharField(max_length=10, verbose_name=u"За какое кол-во указана цена", 
+                                    blank=True, null=True, default=None)
+    manufacture = models.CharField(max_length=20, verbose_name=u"Производитель", 
+                                    blank=True, null=True, default=None)
+    available   = models.BooleanField(default=True, verbose_name=u"в наличии")
+    created     = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated     = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['name']
