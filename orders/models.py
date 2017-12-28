@@ -12,7 +12,7 @@ from django.http import Http404
 from accounts.models import GuestEmail
 
 from shop.models import Product
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save, post_save
 
 from django.contrib.sessions.models import Session
 # from django.contrib.sessions.backends.db import SessionStore
@@ -45,22 +45,22 @@ SHIPPINGCHOICES = (
 )
 class Order(models.Model):
     
-	guest_email = models.ForeignKey(GuestEmail,verbose_name = 'Email')
-	session_key = models.CharField(verbose_name = 'Ключ текущей сессии', 
+	guest_email 	= models.ForeignKey(GuestEmail,verbose_name = 'Email')
+	session_key		= models.CharField(verbose_name = 'Ключ текущей сессии', 
 									max_length = 32, default='000', blank = True,)
-	shipping 	= models.CharField(verbose_name = 'Выберите способ доставки:', max_length = 50, 
+	shipping 		= models.CharField(verbose_name = 'Выберите способ доставки:', max_length = 50, 
 									choices = SHIPPINGCHOICES, default = 'с доставкой', )
+	shipping_state 	= models.BooleanField(verbose_name = 'Нужна доставка', default = True)
 
-
-	address 	= models.CharField(verbose_name='Адрес', max_length=250, 
+	address 		= models.CharField(verbose_name='Адрес', max_length=250, 
 									null = True, blank = True, default = None)
-	postal_code = models.CharField(verbose_name='Почтовый код', max_length=20,
+	postal_code 	= models.CharField(verbose_name='Почтовый код', max_length=20,
 									validators = [postal_code_validator],
 									null = True, blank = True, default = None,)
-	city 		= models.CharField(verbose_name='Город', max_length=100, 
+	city 			= models.CharField(verbose_name='Город', max_length=100, 
 									null = True, blank = True, default = None,)
-	created 	= models.DateTimeField(verbose_name='Создан', auto_now_add=True,)
-	updated 	= models.DateTimeField(verbose_name='Обновлен', auto_now=True,)
+	created 		= models.DateTimeField(verbose_name='Создан', auto_now_add=True,)
+	updated 		= models.DateTimeField(verbose_name='Обновлен', auto_now=True,)
 	# paid = models.BooleanField(verbose_name='Оплачен', default=False)
 
 	class Meta:
@@ -81,6 +81,13 @@ class Order(models.Model):
 	def get_absolute_url(self):
 		return reverse('orders:ThanksForOrder', kwargs={'pk': self.pk})
 
+
+def pre_save_receiver_page_model(sender, instance, *args, **kwargs):
+	if instance.shipping == 'с доставкой' or instance.shipping == '':
+		instance.shipping_state = True
+	else: instance.shipping_state = False
+
+pre_save.connect(pre_save_receiver_page_model, sender=Order)
 
 def post_save_receiver_order_model(sender, instance, created, **kwargs):
 

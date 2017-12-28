@@ -38,6 +38,8 @@ class OrderAdmin(admin.ModelAdmin):
 				'address',
 				'postal_code',
 				'city',
+				'shipping',
+				'shipping_state'
 				)
 	# list_filter = [ 'created', 'updated']
 	inlines = [OrderItemInline]
