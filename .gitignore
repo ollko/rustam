@@ -2,6 +2,8 @@ rustam2/settings/local.py
 db.sqlite3
 uploads/
 orders/tmp/
+shop.json
+
 
 inisial-list-from-rustam.xls
 list-of-products.xls
