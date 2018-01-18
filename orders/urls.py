@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls import url
 from . import views
 
@@ -13,6 +14,7 @@ urlpatterns = [
 
 	url(r'^pdf/(?P<pk>\d+)/$', views.GeneratePDF.as_view(), name= 'GeneratePDF'),
 
-	
+	# Чек-лист начала оформления заказа (купить без регистрации/зарегистрироваться/войти)
+	# url(r'^check-order/$', views.CheckOrderView.as_view(), name='ChekOrder'),
 	
 ]

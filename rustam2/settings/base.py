@@ -42,13 +42,17 @@ INSTALLED_APPS = [
     'bootstrapform',
     'xhtml2pdf',
     'phonenumber_field',
-    
+       
     'home',
     'shop',
-    'orders',   
+    'orders',
     'cart',
     'accounts',
+    
+    
 ]
+
+AUTH_USER_MODEL = 'accounts.User' # change the built-in user model to ours
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -159,3 +163,7 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'korotkaya.olga@yandex.ru'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'

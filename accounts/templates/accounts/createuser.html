@@ -1,0 +1,36 @@
+{% extends "base/__single_base.html" %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>"Your username and password didn't match". Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+<div class = 'my-form'>
+	<a href="/" class="close" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</a>
+	<h3 class="text-center">РЕГИСТРАЦИЯ</h3>
+	<form method="post" action="{% url 'accounts:createuser' %}">
+	{% csrf_token %}
+		{{ form.email|bootstrap}}
+		{{ form.password1|bootstrap }}
+		{{ form.password2|bootstrap }}
+		{{ form.consent }} Нажимая кнопку «Продолжить», я подтверждаю свою дееспособность, даю согласие на обработку моих персональных данных в соответствии <a href="{% url 'accounts:confirm' %}" target="_blank" title="Подробнее о защите персональной информации">с Условиями</a></small>
+		
+		<button type="submit" class="btn btn-success">ДАЛЕЕ</button>
+		<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+</div>
+
+{% endblock %}

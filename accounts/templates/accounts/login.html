@@ -1,0 +1,37 @@
+{% extends "base/__single_base.html" %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+<div class = 'my-form'>
+    <a href="/" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </a>
+    <h3 class="text-center">ВХОД</h3>
+    <form method="post" action="{% url 'accounts:login' %}">
+        {% csrf_token %}
+        {{ form.username|bootstrap }}
+            {{ form.password|bootstrap }}
+
+        <button type="submit" class="btn btn-success">Войти</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+    </form>
+</div>
+
+
+{% endblock %}

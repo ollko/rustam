@@ -14,4 +14,5 @@ urlpatterns = [
 
 	url(r'^contacts/$', views.ContactsView.as_view(), name="contacts",),
 
+
 ]

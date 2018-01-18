@@ -10,7 +10,7 @@ from shop.models import Product
 from .cart import Cart
 from .forms import CartAddProductForm
 
-from django.views.generic import DetailView
+
 from generic.mixins import CategoryListMixin
 
 @require_POST

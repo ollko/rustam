@@ -13,7 +13,9 @@ from generic.mixins import CategoryListMixin
 from shop.models import Product
 from cart.forms import CartAddProductForm
 
-# Create your views here.
+
+
+
 class HomeView(ListView, CategoryListMixin):
 	model = Product
 	template_name = "home/home.html"
@@ -34,3 +36,9 @@ class ShippingView(TemplateView, CategoryListMixin):
 
 class ContactsView(TemplateView, CategoryListMixin):
 	template_name="home/contacts.html"
+
+
+# from django.contrib.auth.views import LoginView
+
+# class MyLoginView(LoginView):
+# 	
