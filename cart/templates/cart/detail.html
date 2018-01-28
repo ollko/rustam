@@ -6,58 +6,6 @@
 
 {% block cart %}
 
-<h3>Ваша корзина товаров {% if not cart %}пуста{% endif %}</h3>
-  <table class="table table-responsive-sm">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Товар</th>
-        <th scope="col">Количество</th>
-        <th scope="col">Удалить</th>
-        <th scope="col">Цена</th>
-        <th scope="col">Полная цена</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in cart %}
-        {% with product=item.product %}
-          <tr>
-            <td class='cart-product-img product-row-item'>
-              <a class='a-cart' href="{{ product.get_absolute_url }}">
-                {% if product.image %}
-                  <img class="card-img-top product-card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                <div class="mx-auto text-center no-product-img-cart ">нет фото</div>
-                {% endif %}
+{% include 'base/_cart.html' %}
 
-              </a>
-            </td>
-            <td class="product-row-item">{{ product.name }}</td>
-            <td class="product-row-item">
-              <form action="{% url 'cart:CartAdd' product.id %}" method="post" class="add">
-                <div class="input-group">
-                  {{ item.update_quantity_form.quantity }}
-                  {{ item.update_quantity_form.update }}
-                  {% csrf_token %}
-                  <input class="btn btn-primary btn-sm" type="submit" value="Обновить">
-                </div>
-              </form>
-            </td>
-            
-            <td class="product-row-item"><a href="{% url 'cart:CartRemove' product.id %}">Удалить</a></td>
-            <td class="product-row-item">{{ item.price }} руб.</td>
-            <td class="product-row-item">{{ item.total_price }} руб.</td>
-          </tr>
-        {% endwith %}
-      {% endfor %}
-        <tr class="total">
-          <td colspan="5">Всего:</td>
-          <td class="num">{{ cart.get_total_price }} руб.</td>
-        </tr>
-    </tbody>
-  </table>
-  <p class="text-right">
-    <a href="{% url 'home:home' %}" class="btn btn-secondary my-cart-btn" role="button">Продолжить Шопинг</a>
-    <a href="{% url 'accounts:CreateGestEmail' %}" class="btn btn-primary my-cart-btn" role="button">Оформить заказ</a>
-  </p>
 {% endblock %}

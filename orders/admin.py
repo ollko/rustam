@@ -26,23 +26,25 @@ OrderPDF.short_description = 'В PDF'
 
 
 class OrderAdmin(admin.ModelAdmin):
-	list_display = ('guest_email',
-					'address',
-					'postal_code',
-					'city',
+	list_display = ('user',
+					# 'address',
+					# 'postal_code',
+					# 'city',
 					'created',
 					OrderPDF,
 					)
 
-	fields =   ('guest_email',
-				'address',
-				'postal_code',
-				'city',
+	fields =   ('user',
+				# 'address',
+				# 'postal_code',
+				# 'city',
 				'shipping',
 				'shipping_state'
 				)
 	# list_filter = [ 'created', 'updated']
 	inlines = [OrderItemInline]
 
+
 admin.site.register(Order, OrderAdmin)
+
 

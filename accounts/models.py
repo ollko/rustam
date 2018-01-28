@@ -13,6 +13,7 @@ from django.contrib.auth.models import (
 	AbstractBaseUser, BaseUserManager
 )
 
+from utils import postal_code_validator
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, is_active=True, is_staff=False, is_admin=False):
@@ -62,7 +63,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
 	email 			= models.EmailField(verbose_name = "Эл. почта:", max_length=255, unique=True)
-	# full_name		= models.CharField(max_length=255, blank=True, null=True)
+
 	active 			= models.BooleanField(default=True) # can login
 	staff			= models.BooleanField(default=False) # staff user non super
 	admin			= models.BooleanField(default=False) # superuser
@@ -112,7 +113,15 @@ class User(AbstractBaseUser):
 	# 	return self.active
 
 class Profile(models.Model):
-	user = models.OneToOneField(User)
+	user 			= models.OneToOneField(User, on_delete = models.CASCADE)
+	full_name		= models.CharField(verbose_name='Полное имя:', max_length=255,)
+	phone 			= PhoneNumberField(verbose_name='Ваш телефон:',)
+	address 		= models.CharField(verbose_name='Адрес', max_length=250,)
+	postal_code 	= models.CharField(verbose_name='Почтовый код', max_length=20,
+									validators = [postal_code_validator],
+									null = True, blank = True, default = None,)
+	city 			= models.CharField(verbose_name='Город', max_length=100, 
+									null = True, blank = True, default = None,)
 	# extend extra data
 
 

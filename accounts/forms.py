@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import GuestEmail
+from .models import GuestEmail, Profile
 
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth import get_user_model
@@ -63,8 +63,7 @@ class UserAdminCreationForm(forms.ModelForm):
         return user
 
 
-class UserCreationForm(UserAdminCreationForm):
-	consent = forms.BooleanField(required=True)
+
 
 
 class UserAdminChangeForm(forms.ModelForm):
@@ -83,3 +82,20 @@ class UserAdminChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+class CurrentUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        # fields = ('full_name','phone','address','postal_code','city',)
+        fields = ('full_name','phone','address',)
+    
+
+
+class UserCreationForm(UserAdminCreationForm):
+    """Includes fields:
+    'email'
+    """
+    consent = forms.BooleanField(required=True)
+
+
+

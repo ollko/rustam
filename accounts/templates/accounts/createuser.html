@@ -26,7 +26,7 @@
 		{{ form.email|bootstrap}}
 		{{ form.password1|bootstrap }}
 		{{ form.password2|bootstrap }}
-		{{ form.consent }} Нажимая кнопку «Продолжить», я подтверждаю свою дееспособность, даю согласие на обработку моих персональных данных в соответствии <a href="{% url 'accounts:confirm' %}" target="_blank" title="Подробнее о защите персональной информации">с Условиями</a></small>
+		<small>{{ form.consent }} Нажимая кнопку «Продолжить», я подтверждаю свою дееспособность, даю согласие на обработку моих персональных данных в соответствии <a href="{% url 'accounts:confirm' %}" target="_blank" title="Подробнее о защите персональной информации">с Условиями</a></small>
 		
 		<button type="submit" class="btn btn-success">ДАЛЕЕ</button>
 		<input type="hidden" name="next" value="{{ next }}" />

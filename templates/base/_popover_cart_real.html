@@ -5,11 +5,17 @@
 {% elif current_url == '/cart/' %}
 
   <p><img src="{% static 'img/icons8-cart-32.png' %}">
-
-    Ваша корзина
-  
+    {% if current_url == '/orders/create/'%}
+      <a href="{% url 'cart:CartDetail' %}">Ваша корзина</a>
+    {% else %}
+      Ваша корзина
+    {% endif %}
     <span class="badge badge-pill" style="background-color:#ff9800; color:#fff;"> {{cart|length}}</span>
+  
   </p>
+
+{% el
+<p><img src="{% static 'img/icons8-cart-32.png' %}">
 
 {% else %}
 
@@ -19,41 +25,5 @@
 </a>
 
 <div id="popover-content-cart" style="display: none">
-  <table class="table">
-    <tbody>
-    {% for item in cart %}
-      {% with product=item.product %}
-        <tr>
-          <td>
-            <a href="{{ product.get_absolute_url }}">
-             {% comment %}<img style="max-width: 50px" src="{{ product.image.url }}" alt="" />{% endcomment %}
-              {% if product.image %}
-                  <img class="card-img-top product-card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                  {% include 'base/_div-for-no-img-camera-cart.html' %}
-                {% endif %}
-            </a>           
-          </td>
-          <td><small>{{ product.name }}</small></td>
-      
-          <td ><small>{{ item.price }} руб.</small></td>
-          <td><small>        
-                x{{ item.quantity }}</small>
-          </td>
-          <td ><small>{{ item.total_price }} руб.</small></td>
-        </tr>
-      {% endwith %}
-    {% endfor %}
-      <tr class="total">
-          <td>Всего:</td>
-          <td colspan="3"></td>
-          <td class="num">{{ cart.get_total_price }} руб.</td>     
-      </tr>
-      <tr>
-        <td colspan="2"><a href="{% url 'cart:CartDetail' %}" role="button" class="btn btn-secondary btn-sm " >Перейти в корзину</a></td>
-        <td colspan="3"><a href="{% url 'accounts:CreateGestEmail' %}" role="button" class="btn btn-primary btn-sm">Оформить заказ</a></td>
-      </tr>
-    </tbody>
-  </table>
-  
+  {% include 'base/_cart_table_without_forms.html' %}
 </div>
