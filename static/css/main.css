@@ -15,7 +15,7 @@ div.my-jumbotron h5{
 }
 
 /*формы оформления заказа*/
-div.my-form{
+div.my-form, form.my-form{
   max-width: 400px;
   margin: 2em auto;
 }
@@ -26,6 +26,11 @@ div.my-card:hover{
     border: 1px solid rgba(0, 0, 0, 0.4);
     
 }
+span.cart-length{
+  color:#35b05f;
+  font-weight:800;
+}
+
 
 /* /cart */
 

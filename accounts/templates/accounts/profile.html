@@ -1,3 +1,18 @@
 {% extends "base/__single_base.html" %}
+{% load bootstrap %}
 
-asdfasdfad
+{% block content %}
+<div class="my-form">
+	<h4 class="text-center">Хотите изменить свои данные?</h4><br>
+		
+	<form action="" method="post" >
+			{% csrf_token %}
+		{{form.user|bootstrap}}	
+		{{form.full_name|bootstrap}}
+		{{form.phone|bootstrap}}
+		{{form.address|bootstrap}}
+		<button type="submit" class="btn btn-primary">Изменить</button>
+		<input type="hidden" name="next" value="/" />
+	</form>
+</div>	
+{% endblock %}

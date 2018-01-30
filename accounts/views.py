@@ -3,13 +3,13 @@ from __future__ import unicode_literals
 
 
 # Create your views here.
-from django.views.generic import TemplateView, FormView, CreateView, DetailView
+from django.views.generic import TemplateView, FormView, CreateView, UpdateView
 from generic.mixins import CategoryListMixin
 from django.contrib.auth import get_user_model, authenticate, login
 
 
-from .models import GuestEmail
-from .forms import GuestEmailForm
+from .models import GuestEmail, Profile
+from .forms import GuestEmailForm, CurrentUserProfileForm
 from accounts.forms import  UserCreationForm
 
 class CreateGestEmail(CreateView):
@@ -20,12 +20,14 @@ class CreateGestEmail(CreateView):
 User = get_user_model()
 
 
-class ProfileView(DetailView, CategoryListMixin):
+class ProfileView(CategoryListMixin, UpdateView):
+	model = Profile	
+	form_class = CurrentUserProfileForm
 	template_name = 'accounts/profile.html'
-	model = User
+	success_url = '/'
 
 
-class CreateUserView(FormView):
+class CreateUserView(CategoryListMixin, FormView):
 
 	template_name 	= 'accounts/createuser.html'
 	form_class 		= UserCreationForm

@@ -1,4 +1,4 @@
-  
+
 
   <table class="table">
     <tbody>
@@ -32,7 +32,7 @@
       </tr>
       <tr>
         <td colspan="2"><a href="{% url 'cart:CartDetail' %}" role="button" class="btn btn-secondary btn-sm " >Перейти в корзину</a></td>
-        <td colspan="3">{% if not current_url == '/orders/create/'%}{{current_url}}<a href="{% url 'accounts:CreateGestEmail' %}" role="button" class="btn btn-primary btn-sm">Оформить заказ</a>{% endif %}</td>
+        <td colspan="3">{% if not current_url == '/orders/create/'%}<a href="{% url 'orders:OrderCreate' %}" role="button" class="btn btn-primary btn-sm">Оформить заказ</a>{% endif %}</td>
       </tr>
     </tbody>
   </table>

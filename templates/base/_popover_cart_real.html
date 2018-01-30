@@ -1,28 +1,16 @@
 {% load static %}
 {% if not cart|length %}
-  <i class="fa fa-shopping-cart" ></i>&nbsp; Ваша корзина пуста
+  <img src="{% static 'img/cart-26.png' %}">
 
-{% elif current_url == '/cart/' %}
+{% elif current_url == '/cart/' or current_url == '/orders/create/'%}
 
-  <p><img src="{% static 'img/icons8-cart-32.png' %}">
-    {% if current_url == '/orders/create/'%}
-      <a href="{% url 'cart:CartDetail' %}">Ваша корзина</a>
-    {% else %}
-      Ваша корзина
-    {% endif %}
-    <span class="badge badge-pill" style="background-color:#ff9800; color:#fff;"> {{cart|length}}</span>
-  
-  </p>
+<img src="{% static 'img/cart-26.png' %}"><small><span class="align-top cart-length">{{cart|length}}</span></small>
 
-{% el
-<p><img src="{% static 'img/icons8-cart-32.png' %}">
+
 
 {% else %}
-
-<a tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><img src="{% static 'img/cart-26.png' %}">&nbsp;Ваша корзина</i>
-<span class="badge badge-pill" style="background-color:#ff9800; color:#fff;">&nbsp;{{cart|length}}</span>
+  <a tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><img src="{% static 'img/cart-26.png' %}"><small><span class="align-top cart-length">{{cart|length}}</span></small></a>
 {% endif %}
-</a>
 
 <div id="popover-content-cart" style="display: none">
   {% include 'base/_cart_table_without_forms.html' %}

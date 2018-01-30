@@ -113,14 +113,14 @@ class User(AbstractBaseUser):
 	# 	return self.active
 
 class Profile(models.Model):
-	user 			= models.OneToOneField(User, on_delete = models.CASCADE)
+	user 			= models.OneToOneField(User,verbose_name='Логин:', on_delete = models.CASCADE)
 	full_name		= models.CharField(verbose_name='Полное имя:', max_length=255,)
-	phone 			= PhoneNumberField(verbose_name='Ваш телефон:',)
-	address 		= models.CharField(verbose_name='Адрес', max_length=250,)
-	postal_code 	= models.CharField(verbose_name='Почтовый код', max_length=20,
+	phone 			= PhoneNumberField(verbose_name='Tелефон:',)
+	address 		= models.CharField(verbose_name='Адрес:', max_length=250,)
+	postal_code 	= models.CharField(verbose_name='Почтовый код:', max_length=20,
 									validators = [postal_code_validator],
 									null = True, blank = True, default = None,)
-	city 			= models.CharField(verbose_name='Город', max_length=100, 
+	city 			= models.CharField(verbose_name='Город:', max_length=100, 
 									null = True, blank = True, default = None,)
 	# extend extra data
 

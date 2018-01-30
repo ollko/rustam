@@ -22,10 +22,8 @@
 		<form action="" method="post">
 		{{form.errors}}
 			<h3>Получатель:</h3><hr>
-			<div class="alert alert-dark" role="alert">
-			  {{ request.user }}
-			</div>
-				
+			
+				{{ form.user|bootstrap }}
 				{{ form.full_name|bootstrap }}
 				{{ form.phone|bootstrap }}
 			<br>

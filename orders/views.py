@@ -35,6 +35,7 @@ except:
 
 from orders.forms import OrderCreateForm
 from cart.views import CartDetail
+from generic.mixins import CategoryListMixin
 
 class GeneratePDF(View):
 	def get(self, request, *args, **kwargs):
@@ -100,7 +101,7 @@ class GeneratePDF(View):
 # 							})
 from django.core.exceptions import ObjectDoesNotExist
 
-class CreateOrderView(FormView):
+class CreateOrderView(CategoryListMixin, FormView):
 
 	template_name 	= 'orders/order_form.html'
 	form_class 		= OrderCreateForm
@@ -111,16 +112,20 @@ class CreateOrderView(FormView):
 		Returns the initial data to use for forms on this view.
 		"""
 		initial = super(CreateOrderView, self).get_initial()
+		
 		user 	= self.request.user
+		
 		try:
 			p = user.profile
 		except ObjectDoesNotExist:
 			pass
-		initial['full_name'] = p.full_name
-		initial['phone']	 = p.phone
-		initial['address']	 = p.address
-		print p.full_name,p.phone,p.address
-		return initial
+		else:
+			initial['user'] 		= p.user
+			initial['full_name']	= p.full_name
+			initial['phone']	 	= p.phone
+			initial['address']		= p.address
+		finally:
+			return initial
 
 	# def get_context_data(self, **kwargs):
 	# 	context = super(CreateOrderView, self).get_context_data(**kwargs)

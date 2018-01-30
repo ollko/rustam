@@ -87,8 +87,25 @@ class CurrentUserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         # fields = ('full_name','phone','address','postal_code','city',)
-        fields = ('full_name','phone','address',)
-    
+        fields = ('user','full_name','phone','address',)
+
+
+    def __init__(self, *args, **kwargs):
+        super(CurrentUserProfileForm, self).__init__(*args, **kwargs)
+        instance = getattr(self, 'instance', None)
+
+        if instance and instance.id:
+            self.fields['user'].required = False
+            self.fields['user'].widget.attrs['disabled'] = 'disabled'
+
+    def clean_user(self):
+        
+        instance = getattr(self, 'instance', None)
+        if instance :
+
+            return instance.user
+        else:
+            return self.cleaned_data.get('user', None)
 
 
 class UserCreationForm(UserAdminCreationForm):

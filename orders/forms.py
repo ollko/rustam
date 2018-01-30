@@ -67,8 +67,16 @@ class OrderCreateForm(CurrentUserProfileForm):
 	'address',
 	'shipping'
 	"""
-	shipping = forms.ChoiceField(required = True, widget=forms.RadioSelect, choices=SHIPPINGCHOICES)
+	shipping = forms.ChoiceField(label='',required = True, widget=forms.RadioSelect, choices=SHIPPINGCHOICES)
 	
+	def __init__(self, *args, **kwargs):
+		super(OrderCreateForm, self).__init__(*args, **kwargs)
+		self.fields['user'].required = False
+		self.fields['user'].widget.attrs['disabled'] = 'disabled'
+
+	def clean_user(self):
+		pass
+
 	def clean_address(self):
 		shipping = self.cleaned_data.get("shipping")
 		address = self.cleaned_data.get("address")

@@ -1,6 +1,5 @@
-// $(function () {
-//   $('[data-toggle="popover"]').popover()
-// })
+
+//Popovers initialization
 
 $("[data-toggle=popover]").each(function(i, obj) {
 
