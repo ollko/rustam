@@ -89,9 +89,9 @@
             </div>
         <div>
         <div class='details'>      
-            Информация о клиенте: <b>{{ order.guest_email.email }},{{ order.guest_email.guest_phone }}</b><br/>
+            Информация о клиенте: <b>{{ order.user.email }}, {{ order.user.profile.full_name }}, {{ order.user.profile.phone }}</b><br/>
             Способ доставки: <b>{{ order.shipping }}</b><br/>
-            Адрес доставки: <b>{{ order.address }}</b><br/>
+            Адрес доставки: <b>{{ order.user.profile.address }}</b><br/>
             Сумма к оплате: <b>{{order.get_total_cost}}  руб.</b><br/>
             Дата заказа: <b>{{ order.created }}</b>
             <hr class='hrItem' />

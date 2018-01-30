@@ -118,8 +118,7 @@ def post_save_receiver_order_model(sender, instance, created, **kwargs):
 
 		os.remove(filename)
 		
-		current_session.delete()
-
+		
 
 post_save.connect(post_save_receiver_order_model, sender=Order)
 

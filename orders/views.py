@@ -64,41 +64,6 @@ class GeneratePDF(View):
 		return HttpResponse('Not found')
 
 
-
-
-# class CreateOrderView(CreateView):
-# 	model 		= Order
-# 	form_class 	= OrderCreateForm
-
-	
-
-# 	def form_valid(self, form):
-# 		"""
-# 		If the form is valid, save the associated model.
-# 		"""
-		
-# 		form.instance.guest_email = GuestEmail.objects.get(pk=self.kwargs['pk'])
-# 		form.instance.session_key = self.request.session.session_key
-# 		return super(CreateOrderView, self).form_valid(form)
-
-
-# def create_order(request):
-# 	user = request.user
-# 	if request.method == 'POST':
-# 		user_form 	= CurrentUserForm(request.POST, prefix='user', instance=user)
-# 		order_form 	=OrderCreateForm(request.POST, prefix='order')
-# 		if formuser.is_valid() and formorder.is_valid():
-# 			formuser.save()
-# 			formorder.save()
-# 			return HttpResponseRedirect('/')
-
-# 	else:
-# 		user_form 	= CurrentUserForm(prefix='user', instance=user)
-# 		order_form 	=OrderCreateForm(prefix='order')
-# 	return render(request, 'orders/order_form.html', {
-# 							'user_form': user_form,
-# 							'order_form': order_form,
-# 							})
 from django.core.exceptions import ObjectDoesNotExist
 
 class CreateOrderView(CategoryListMixin, FormView):
@@ -114,8 +79,8 @@ class CreateOrderView(CategoryListMixin, FormView):
 		initial = super(CreateOrderView, self).get_initial()
 		
 		user 	= self.request.user
-		initial['user'] 		= user.email
-		print "initial['user'] =",initial['user'] 
+		initial['user'] 		= user
+		
 		try:
 			p = user.profile
 		except ObjectDoesNotExist:
@@ -128,9 +93,6 @@ class CreateOrderView(CategoryListMixin, FormView):
 		finally:
 			return initial
 
-	# def get_context_data(self, **kwargs):
-	# 	context = super(CreateOrderView, self).get_context_data(**kwargs)
-	# 	return context
 		
 	def form_invalid(self, form):
 		return super(CreateOrderView, self).form_invalid(form)
@@ -150,7 +112,7 @@ class CreateOrderView(CategoryListMixin, FormView):
 		p.full_name 	= form.cleaned_data['full_name']
 		p.phone 		= form.cleaned_data['phone']
 		p.address 		= form.cleaned_data['address']
-		# print 'instance=',instance
+
 		p.save()
 
 		o 	= Order(user=user,
@@ -158,6 +120,16 @@ class CreateOrderView(CategoryListMixin, FormView):
 					shipping = form.cleaned_data['shipping'])
 		o.save()
 		return super(CreateOrderView, self).form_valid(form)
+
+
+	def get_success_url(self):
+		# Clear cart after order create
+		
+		cart=Cart(self.request)
+		cart.clear()
+
+		return super(CreateOrderView, self).get_success_url()
+
 
 class ThanksForOrderView(TemplateView):
 	template_name = 'orders/thanks_for_order.html'
