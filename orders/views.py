@@ -114,13 +114,14 @@ class CreateOrderView(CategoryListMixin, FormView):
 		initial = super(CreateOrderView, self).get_initial()
 		
 		user 	= self.request.user
-		
+		initial['user'] 		= user.email
+		print "initial['user'] =",initial['user'] 
 		try:
 			p = user.profile
 		except ObjectDoesNotExist:
 			pass
 		else:
-			initial['user'] 		= p.user
+			
 			initial['full_name']	= p.full_name
 			initial['phone']	 	= p.phone
 			initial['address']		= p.address

@@ -2,8 +2,12 @@
 {% if request.user.is_authenticated %}
 <a tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="authUser" data-trigger="click hover"><img src="{% static 'img/user-24.png' %}"></a>
 
-<div id="popover-content-authUser" style="display: none">      
+<div id="popover-content-authUser" style="display: none">
+{% if request.user.profile %}     
 	<a class="dropdown-item" href="{% url 'accounts:profile' request.user.id %}">{{ request.user.email }}</a>
+	{% else %}
+	<a class="dropdown-item" href="#">{{ request.user.email }}</a>
+	{% endif %}
 	<div class="dropdown-divider"></div>
 	<a class="dropdown-item" href="{% url 'accounts:logout' %}">Выход</a>       
 </div>

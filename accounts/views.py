@@ -19,6 +19,12 @@ class CreateGestEmail(CreateView):
 
 User = get_user_model()
 
+class ProfileView(CategoryListMixin, CreateView):
+	model = Profile	
+	form_class = CurrentUserProfileForm
+	template_name = 'accounts/profile.html'
+	success_url = '/'
+
 
 class ProfileView(CategoryListMixin, UpdateView):
 	model = Profile	
