@@ -61,18 +61,19 @@ from .models import SHIPPINGCHOICES
 class OrderCreateForm(CurrentUserProfileForm):
 	"""Includes fields:
 	'user'  (uneditable field),
-	'email',
 	'full_name',
 	'phone',
 	'address',
 	'shipping'
 	"""
-	shipping = forms.ChoiceField(label='',required = True, widget=forms.RadioSelect, choices=SHIPPINGCHOICES)
+	shipping = forms.ChoiceField(label='',required = True, widget=forms.RadioSelect, 
+				choices=SHIPPINGCHOICES, initial=('с доставкой', 'Доставка в пределах Восточного Округа Москвы'))
 	
 	def __init__(self, *args, **kwargs):
 		super(OrderCreateForm, self).__init__(*args, **kwargs)
 		self.fields['user'].required = False
 		self.fields['user'].widget.attrs['disabled'] = 'disabled'
+		
 
 	def clean_user(self):
 		pass

@@ -98,6 +98,10 @@ class CurrentUserProfileForm(forms.ModelForm):
             self.fields['user'].required = False
             self.fields['user'].widget.attrs['disabled'] = 'disabled'
 
+        self.fields['full_name'].widget.attrs['placeholder'] = u'Василий Баранов'
+        self.fields['phone'].widget.attrs['placeholder'] = u'+71234567890'
+        self.fields['address'].widget.attrs['placeholder'] = u'Москва, Пасечная, 17'
+
     def clean_user(self):
         
         instance = getattr(self, 'instance', None)

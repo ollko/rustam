@@ -13,6 +13,7 @@ from .forms import CartAddProductForm
 
 from generic.mixins import CategoryListMixin
 
+
 @require_POST
 def CartAdd(request, product_id):
 	cart = Cart(request)
@@ -31,18 +32,8 @@ def CartRemove(request, product_id):
 	cart.remove(product)
 	return redirect('cart:CartDetail')
 
-# def CartDetail(request):
-#     cart = Cart(request)
-#     for item in cart:
-#         item['update_quantity_form'] = CartAddProductForm(
-#                                         initial={
-#                                             'quantity': item['quantity'],
-#                                             'update': True
-#                                         })
 
-#     return render(request, 'cart/detail.html', {'cart': cart})
-
-class CartDetail(TemplateView, CategoryListMixin):
+class CartDetail(CategoryListMixin, TemplateView):
 
 	template_name = 'cart/detail.html'
 

@@ -5,15 +5,15 @@
 {% block content %}
 
 {% if form.errors %}
-<p class="text-danger">Электронный адрес или пароль указаны неверно. Попробуйте еще раз.</p>
+<p class="text-danger">Электронный адрес либо пароль указаны неверно. Попробуйте еще раз.</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    <p>У вас нет прав для доступа к этой странице. Для того, чтобы продолжить,
+    пожалуйста, войдите в систему под другим именем, имеющим такой доступ.</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p>Пожалуйста, войдите в систему, чтобы увидеть запрашиваемую страницу</p>
     {% endif %}
 {% endif %}
 <div class = 'my-form'>

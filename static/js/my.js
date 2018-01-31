@@ -18,11 +18,12 @@ $(this).popover({
 
 // SIPPING FORM
 
-$('input:radio[name = "shipping"]').on("click", function(){
-		
-		$("label[for='id_address']").parent().toggle();
-		$("label[for='id_postal_code']").parent().toggle();
-		$("label[for='id_city']").parent().toggle();
+$("#id_shipping_0").on("click", function(){		
+		$("label[for='id_address']").parent().show();
+});
+
+$("#id_shipping_1").on("click", function(){		
+		$("label[for='id_address']").parent().hide();		
 });
 
 // SIPPING FORM

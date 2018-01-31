@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView
 
 from .models import Order, Orderitem
-from accounts.models import GuestEmail, Profile
+from accounts.models import Profile
 from cart.cart import Cart
 
 from django.http import HttpResponse
@@ -36,6 +36,9 @@ except:
 from orders.forms import OrderCreateForm
 from cart.views import CartDetail
 from generic.mixins import CategoryListMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
+
 
 class GeneratePDF(View):
 	def get(self, request, *args, **kwargs):
@@ -66,11 +69,11 @@ class GeneratePDF(View):
 
 from django.core.exceptions import ObjectDoesNotExist
 
-class CreateOrderView(CategoryListMixin, FormView):
+class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 
 	template_name 	= 'orders/order_form.html'
 	form_class 		= OrderCreateForm
-	success_url = '/'
+
 	def get_initial(self):
 
 		"""
@@ -119,6 +122,7 @@ class CreateOrderView(CategoryListMixin, FormView):
 					session_key=self.request.session.session_key,
 					shipping = form.cleaned_data['shipping'])
 		o.save()
+		self.success_url = reverse('orders:ThanksForOrder', kwargs={'pk': o.id} )
 		return super(CreateOrderView, self).form_valid(form)
 
 
@@ -131,7 +135,7 @@ class CreateOrderView(CategoryListMixin, FormView):
 		return super(CreateOrderView, self).get_success_url()
 
 
-class ThanksForOrderView(TemplateView):
+class ThanksForOrderView(LoginRequiredMixin, TemplateView):
 	template_name = 'orders/thanks_for_order.html'
 
 	def get_context_data(self, **kwargs):

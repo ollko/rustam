@@ -11,6 +11,8 @@ from django.contrib.auth import get_user_model, authenticate, login
 from .models import GuestEmail, Profile
 from .forms import GuestEmailForm, CurrentUserProfileForm
 from accounts.forms import  UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class CreateGestEmail(CreateView):
 	model 		= GuestEmail
@@ -19,14 +21,8 @@ class CreateGestEmail(CreateView):
 
 User = get_user_model()
 
-class ProfileView(CategoryListMixin, CreateView):
-	model = Profile	
-	form_class = CurrentUserProfileForm
-	template_name = 'accounts/profile.html'
-	success_url = '/'
 
-
-class ProfileView(CategoryListMixin, UpdateView):
+class ProfileView(LoginRequiredMixin, CategoryListMixin, UpdateView):
 	model = Profile	
 	form_class = CurrentUserProfileForm
 	template_name = 'accounts/profile.html'

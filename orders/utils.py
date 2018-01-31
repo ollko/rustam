@@ -42,8 +42,8 @@ def send_pdf_order(order_id, filename, addr_to):
 
 	subject = 'Заказ_%s' %(order_id)
 	body 	= u'<p>Информация о вашем заказе находится в приложении к письму.</p>'
-	from_email = 'korotkaya.olga@yandex.ru'
-	to_email   = [addr_to,]
+	from_email = 'robot@posuda-pls.ru'
+	to_email   = [addr_to,'rusglomer@mail.ru']
 
 	message = EmailMessage(subject, body, from_email, to_email)
 	
