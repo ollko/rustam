@@ -92,7 +92,11 @@
             Информация о клиенте: <b>{{ order.user.email }}, {{ order.user.profile.full_name }}, {{ order.user.profile.phone }}</b><br/>
             Способ доставки: <b>{{ order.shipping }}</b><br/>
             Адрес доставки: <b>{{ order.user.profile.address }}</b><br/>
+            {% if order.shipping_state %}
+            Сумма к оплате: <b>{{ order.get_total_cost|add:"500"|floatformat:"2" }} руб.</b><br/>
+            {% else %}
             Сумма к оплате: <b>{{order.get_total_cost}}  руб.</b><br/>
+            {% endif %}
             Дата заказа: <b>{{ order.created }}</b>
             <hr class='hrItem' />
         </div>
