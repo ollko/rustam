@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['www.posuda-pls.ru','posuda-pls.ru',]
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+ 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,13 +42,12 @@ INSTALLED_APPS = [
     'bootstrapform',
     'xhtml2pdf',
     'phonenumber_field',
-
+       
     'home',
     'shop',
-    'orders',   
+    'orders',
     'cart',
     'accounts',
-    'registration',
     
 ]
 
@@ -90,7 +89,7 @@ WSGI_APPLICATION = 'rustam2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'u67523',
+        'NAME': 'u67523_rustam',
         'USER': 'u67523',
         'PASSWORD': 'mpKYoiAunR3bUtY',
         'HOST': 'localhost',
@@ -176,3 +175,5 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'korotkaya.olga@yandex.ru'
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
