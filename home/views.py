@@ -16,25 +16,46 @@ from cart.forms import CartAddProductForm
 
 
 
-class HomeView(ListView, CategoryListMixin):
+class HomeView(CategoryListMixin, ListView):
 	model = Product
 	template_name = "home/home.html"
 	queryset = Product.objects.all().order_by('-created')[:6]
 	context_object_name = 'products'
 	def get_context_data(self, **kwargs):
-		context            = super(HomeView, self).get_context_data(**kwargs)
-		context['cart_product_form'] = CartAddProductForm()
+		context            				= super(HomeView, self).get_context_data(**kwargs)
+		context['cart_product_form'] 	= CartAddProductForm()
 
 		return context
 
-class AboutView(TemplateView, CategoryListMixin):
+class SearchView(CategoryListMixin, ListView):
+	model = Product
+	template_name = "home/search.html"
+	# queryset = Product.objects.all().order_by('-created')[:6]
+	context_object_name = 'products'
+	def get_context_data(self, **kwargs):
+		context            = super(SearchView, self).get_context_data(**kwargs)
+		context['cart_product_form'] = CartAddProductForm()
+		return context
+
+	def get_queryset(self):
+		qs = Product.objects.all()
+		query = self.request.GET.get('q')
+		if query is not None:
+			qs = qs.filter(name__icontains=query)
+			return qs
+		return
+
+
+
+
+class AboutView(CategoryListMixin, TemplateView):
 	template_name="home/about.html"
 
 
-class ShippingView(TemplateView, CategoryListMixin):
+class ShippingView(CategoryListMixin, TemplateView):
 	template_name="home/shipping.html"
 
-class ContactsView(TemplateView, CategoryListMixin):
+class ContactsView(CategoryListMixin, TemplateView):
 	template_name="home/contacts.html"
 
 

@@ -1,0 +1,20 @@
+{% extends "base/__base.html" %}
+
+{% block yandexwm %}
+<meta name="yandex-verification" content="dd25a010164436c7" />
+{% endblock %}
+
+{% block content %}
+
+{% if products %}
+	<h3>Результаты поиска:</h3>
+	<div class="row">
+		{% for product in products %}
+			{% include 'base/_product_cards.html' %}
+		{% endfor %}
+	</div><!--/row-->
+{% else %}
+	<h3>К сожалению, по вашему запросу ничего не найдено.</h3>
+{% endif %}
+
+{% endblock %}

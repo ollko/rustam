@@ -14,5 +14,8 @@ urlpatterns = [
 
 	url(r'^contacts/$', views.ContactsView.as_view(), name="contacts",),
 
+	url(r'^search/$', views.SearchView.as_view(), name="search",),
+
+
 
 ]
