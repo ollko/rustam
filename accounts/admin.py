@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 
-from .models import GuestEmail, Profile
+from .models import Profile, GuestProfile
 
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -60,11 +60,8 @@ admin.site.unregister(Group)
 
 admin.site.register(User, UserAdmin)
 
-class GuestEmailAdmin(admin.ModelAdmin):
-	search_fields = ['email']
-	class Meta:
-		model = GuestEmail
-
-admin.site.register(GuestEmail, GuestEmailAdmin)
 
 admin.site.register(Profile)
+
+
+admin.site.register(GuestProfile)

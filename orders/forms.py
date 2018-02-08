@@ -54,7 +54,7 @@ from .models import Order
 # 			raise forms.ValidationError("Введите город!")
 # 		return city
 
-from accounts.forms import CurrentUserProfileForm
+from accounts.forms import CurrentUserProfileForm, GuestUserProfileForm
 from .models import SHIPPINGCHOICES
 
 
@@ -67,21 +67,49 @@ class OrderCreateForm(CurrentUserProfileForm):
 	'shipping'
 	"""
 	shipping = forms.ChoiceField(label='',required = True, widget=forms.RadioSelect, 
-				choices=SHIPPINGCHOICES, initial=('с доставкой', 'Доставка в пределах Восточного Округа Москвы'))
+				choices=SHIPPINGCHOICES, initial=('0', 'Доставка в пределах Восточного Округа Москвы'))
 	
 	def __init__(self, *args, **kwargs):
 		super(OrderCreateForm, self).__init__(*args, **kwargs)
 		self.fields['user'].required = False
 		self.fields['user'].widget.attrs['disabled'] = 'disabled'
-		
+
 
 	def clean_user(self):
 		pass
+		# return self.initial["user"]
 
-	def clean_address(self):
+	def clean(self):
+		super(OrderCreateForm, self).clean()
+		# print 'type(cleaned_data)=',type(cleaned_data)
+
 		shipping = self.cleaned_data.get("shipping")
 		address = self.cleaned_data.get("address")
-		if shipping==u'с доставкой' and address==None :
+	
+		if shipping==u'0' and address==None :
 
-			raise forms.ValidationError("Введите адрес!")
+			raise forms.ValidationError("Введите адрес доставки!")
+		return address
+
+class OrderForGestCreateForm(GuestUserProfileForm):
+	"""Includes fields:
+	'user'  (uneditable field),
+	'full_name',
+	'phone',
+	'address',
+	'shipping'
+	"""
+
+	shipping = forms.ChoiceField(label='',required = True, widget=forms.RadioSelect, 
+				choices=SHIPPINGCHOICES, initial=('0', 'Доставка в пределах Восточного Округа Москвы'))
+	
+	def clean(self):
+		super(OrderForGestCreateForm, self).clean()
+		print '11111111111111'
+		shipping = self.cleaned_data.get("shipping")
+		address = self.cleaned_data.get("address")
+	
+		if shipping==u'0' and address==None :
+
+			raise forms.ValidationError("Введите адрес доставки!")
 		return address

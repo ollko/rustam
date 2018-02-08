@@ -116,7 +116,12 @@ class Profile(models.Model):
 	user 			= models.OneToOneField(User,verbose_name='Логин:', on_delete = models.CASCADE)
 	full_name		= models.CharField(verbose_name='Полное имя:', max_length=255,)
 	phone 			= PhoneNumberField(verbose_name='Tелефон:',)
-	address 		= models.CharField(verbose_name='Адрес:', max_length=250,)
+	address 		= models.CharField(verbose_name='Адрес:',
+										max_length=250,
+										null=True,
+										blank=True,
+										default=None,
+										)
 	postal_code 	= models.CharField(verbose_name='Почтовый код:', max_length=20,
 									validators = [postal_code_validator],
 									null = True, blank = True, default = None,)
@@ -125,22 +130,38 @@ class Profile(models.Model):
 	# extend extra data
 
 
-class GuestEmail(models.Model):
+# class GuestEmail(models.Model):
 
-	email        = models.EmailField(verbose_name='Ваш email:',)
-	guest_phone  = PhoneNumberField(verbose_name='Ваш телефон:', default=None, null=True)
-	active       = models.BooleanField(default=True)
-	update       = models.DateTimeField(auto_now=True)
-	timestamp    = models.DateTimeField(auto_now_add=True)
+# 	email        = models.EmailField(verbose_name='Ваш email:',)
+# 	update       = models.DateTimeField(auto_now=True)
+# 	timestamp    = models.DateTimeField(auto_now_add=True)
 
-	class Meta:
-		verbose_name = 'Гостевой email'
-		verbose_name_plural = 'Гостевые emails'
+# 	class Meta:
+# 		verbose_name = 'Гостевой email'
+# 		verbose_name_plural = 'Гостевые emails'
+
+# 	def __unicode__(self):
+# 		return self.email
+
+	# def get_absolute_url(self):
+	# 	return reverse('orders:OrderCreate', kwargs={'pk': self.pk})
+
+
+class GuestProfile(models.Model):
+	user 			= models.EmailField(verbose_name='Ваш email:',)
+	full_name		= models.CharField(verbose_name='Полное имя:', max_length=255,)
+	phone 			= PhoneNumberField(verbose_name='Tелефон:',)
+	address 		= models.CharField(verbose_name='Адрес:',
+										max_length=250,
+										null=True,
+										blank=True,
+										default=None,
+										)
+	postal_code 	= models.CharField(verbose_name='Почтовый код:', max_length=20,
+									validators = [postal_code_validator],
+									null = True, blank = True, default = None,)
+	city 			= models.CharField(verbose_name='Город:', max_length=100, 
+									null = True, blank = True, default = None,)
 
 	def __unicode__(self):
-		return self.email
-
-	def get_absolute_url(self):
-		return reverse('orders:OrderCreate', kwargs={'pk': self.pk})
-
-	
+		return self.user

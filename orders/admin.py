@@ -27,21 +27,23 @@ OrderPDF.short_description = 'В PDF'
 
 class OrderAdmin(admin.ModelAdmin):
 	list_display = ('user',
-					# 'address',
-					# 'postal_code',
-					# 'city',
+					'guest_profile',
+					# 'session_key',
+					# 'shipping',
 					'created',
+					'updated',
 					OrderPDF,
 					)
 
 	fields =   ('user',
-				# 'address',
-				# 'postal_code',
-				# 'city',
+				'guest_profile',
+				# 'session_key',
 				'shipping',
-				'shipping_state'
+				# 'created',
+				# 'updated',
 				)
-	# list_filter = [ 'created', 'updated']
+	readonly_fields = ('user','guest_profile',)
+	list_filter = [ 'created', 'updated']
 	inlines = [OrderItemInline]
 
 

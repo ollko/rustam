@@ -1,38 +1,38 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from .models import GuestEmail, Profile
+from .models import  Profile, GuestProfile
 
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class GuestEmailForm(forms.ModelForm):
-	class Meta:
-		model = GuestEmail
-		fields = ['email','guest_phone',]
-		localized_fields = ('email','guest_phone',)
+# class GuestEmailForm(forms.ModelForm):
+# 	class Meta:
+# 		model = GuestEmail
+# 		fields = ['email',]
+# 		localized_fields = ('email',)
 
-	def __init__(self, *args, **kwargs):
-		super(GuestEmailForm, self).__init__(*args, **kwargs)
-		self.fields['email'].widget = forms.TextInput(attrs={
-			'placeholder': u'123@yandex.ru',
-			# 'id'		: ... ,
-			# 'class'	: ... ,
-			# 'name'	: ... ,
-			})
+# 	def __init__(self, *args, **kwargs):
+# 		super(GuestEmailForm, self).__init__(*args, **kwargs)
+# 		self.fields['email'].widget = forms.TextInput(attrs={
+# 			'placeholder': u'123@yandex.ru',
+# 			# 'id'		: ... ,
+# 			# 'class'	: ... ,
+# 			# 'name'	: ... ,
+# 			})
 
-		self.fields['guest_phone'].widget = forms.TextInput(attrs={
-			'placeholder': u'+71234567890',			
-			})
+# 		self.fields['guest_phone'].widget = forms.TextInput(attrs={
+# 			'placeholder': u'+71234567890',			
+# 			})
 
 		
-	def clean_email(self):
-		email = self.cleaned_data.get("email")
+# 	def clean_email(self):
+# 		email = self.cleaned_data.get("email")
 		
-		if email == "vasia@yandex.ru":
-			raise forms.ValidationError("Введите корректный адрес.")
-		return email
+# 		if email == "vasia@yandex.ru":
+# 			raise forms.ValidationError("Введите корректный адрес.")
+# 		return email
 		
 
 
@@ -50,6 +50,7 @@ class UserAdminCreationForm(forms.ModelForm):
         # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
+        print 'self.cleaned_data=',self.cleaned_data
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Пароли не совпадают")
         return password2
@@ -102,11 +103,12 @@ class CurrentUserProfileForm(forms.ModelForm):
         self.fields['phone'].widget.attrs['placeholder'] = u'+71234567890'
         self.fields['address'].widget.attrs['placeholder'] = u'Москва, Пасечная, 17'
 
+
+
     def clean_user(self):
         
         instance = getattr(self, 'instance', None)
         if instance :
-
             return instance.user
         else:
             return self.cleaned_data.get('user', None)
@@ -120,3 +122,17 @@ class UserCreationForm(UserAdminCreationForm):
 
 
 
+class GuestUserProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = GuestProfile
+        # fields = ('full_name','phone','address','postal_code','city',)
+        fields = ('user','full_name','phone','address',)
+
+
+    def __init__(self, *args, **kwargs):
+        super(GuestUserProfileForm, self).__init__(*args, **kwargs)      
+        self.fields['user'].widget.attrs['placeholder'] = u'vasia.baranov@yandex.ru'
+        self.fields['full_name'].widget.attrs['placeholder'] = u'Василий Баранов'
+        self.fields['phone'].widget.attrs['placeholder'] = u'+71234567890'
+        self.fields['address'].widget.attrs['placeholder'] = u'Москва, Пасечная, 17'

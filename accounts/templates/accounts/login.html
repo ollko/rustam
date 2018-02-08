@@ -36,6 +36,15 @@
             <a href="{% url 'accounts:createuser' %}" role="button" class="btn btn-primary">Зарегистрироваться</a>
         </div>
     </div>
+    <hr>
+    <div class="row">
+        
+        <div class="col-md-12">
+            <p>Хотите оформить заказ без регистрации?</p>
+
+            <a href="{% url 'orders:OrderCreateGuest' %}" role="button" class="btn btn-primary">Без регистрации</a>
+        </div>
+    </div>
        
     </form>
 </div>

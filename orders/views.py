@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView
 
 from .models import Order, Orderitem
-from accounts.models import Profile
+from accounts.models import Profile, GuestProfile
 from cart.cart import Cart
 
 from django.http import HttpResponse
@@ -33,7 +33,7 @@ try:
 except:
 	pass
 
-from orders.forms import OrderCreateForm
+from orders.forms import OrderCreateForm, OrderForGestCreateForm
 from cart.views import CartDetail
 from generic.mixins import CategoryListMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -98,6 +98,8 @@ class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 
 		
 	def form_invalid(self, form):
+		# user 	= self.request.user
+		# form.initial['user'] 		= user
 		return super(CreateOrderView, self).form_invalid(form)
 
 	def form_valid(self, form):
@@ -135,14 +137,53 @@ class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 		return super(CreateOrderView, self).get_success_url()
 
 
-class ThanksForOrderView(LoginRequiredMixin, TemplateView):
+
+
+class OrderCreateGuestView(CategoryListMixin, FormView):
+	template_name 	= 'orders/order_form.html'
+	form_class 		= OrderForGestCreateForm
+
+	def form_valid(self, form):
+		"""
+		If the form is valid, redirect to the supplied URL.
+		"""
+		guest_profile = GuestProfile.objects.create(
+						user = form.cleaned_data['user'],
+						full_name = form.cleaned_data['full_name'],
+						phone = form.cleaned_data['phone'],
+						address = form.cleaned_data['address']
+						)
+
+		guest_profile.save()
+
+		o 	= Order(guest_profile=guest_profile,
+					session_key=self.request.session.session_key,
+					shipping = form.cleaned_data['shipping'])
+		o.save()
+		self.success_url = reverse('orders:ThanksForOrder', kwargs={'pk': o.id} )
+		return super(OrderCreateGuestView, self).form_valid(form)
+
+	def get_success_url(self):
+		# Clear cart after order create
+		
+		cart=Cart(self.request)
+		cart.clear()
+		
+
+		return super(OrderCreateGuestView, self).get_success_url()
+
+
+class ThanksForOrderView(TemplateView):
 	template_name = 'orders/thanks_for_order.html'
 
 	def get_context_data(self, **kwargs):
 		context = super(ThanksForOrderView, self).get_context_data(**kwargs)
 		context['order_id']    = kwargs['pk']
 		current_order = get_object_or_404(Order, pk=kwargs['pk'])
-		context['user_email'] = current_order.user
+		if current_order.user:
+			context['user_email'] = current_order.user.email
+		else:
+			context['user_email'] = current_order.guest_profile.user
 		return context
 			
 

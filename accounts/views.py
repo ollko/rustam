@@ -8,15 +8,12 @@ from generic.mixins import CategoryListMixin
 from django.contrib.auth import get_user_model, authenticate, login
 
 
-from .models import GuestEmail, Profile
-from .forms import GuestEmailForm, CurrentUserProfileForm
+from .models import  Profile
+from .forms import CurrentUserProfileForm
 from accounts.forms import  UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CreateGestEmail(CreateView):
-	model 		= GuestEmail
-	form_class 	= GuestEmailForm
 
 
 User = get_user_model()

@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.http import Http404
 
 # Create your models here.
-from accounts.models import GuestEmail
+from accounts.models import GuestProfile
 
 from shop.models import Product
 from django.db.models.signals import pre_save, post_save
@@ -41,21 +41,40 @@ def postal_code_validator(value):
 	raise ValidationError('Некоректный почтовый код')	
 
 SHIPPINGCHOICES = (
-	('с доставкой', 'Доставка в пределах Восточного Округа Москвы'), 
-	('самовывоз', 'Самовывоз'), 
+	('0', 'Доставка в пределах Восточного Округа Москвы'), 
+	('1', 'Самовывоз'), 
 )
 class Order(models.Model):
     
-	user 			= models.ForeignKey(User,verbose_name = 'Email', default='1',on_delete = models.CASCADE)
+	user 			= models.ForeignKey(User,
+										verbose_name = 'Авторизованный клиент', 
+										default = None,
+										null = True,
+										on_delete = models.CASCADE,
+										)
+	guest_profile   = models.ForeignKey(GuestProfile,
+										verbose_name = 'Гость',
+										default = None,
+										null = True,
+										on_delete = models.CASCADE,
+										)
 	session_key		= models.CharField(verbose_name = 'Ключ текущей сессии', 
-									max_length = 32, default='000', blank = True,)
-	shipping 		= models.CharField(verbose_name = 'Выберите способ доставки:', max_length = 50, 
-									choices = SHIPPINGCHOICES, default = 'с доставкой', )
-	shipping_state 	= models.BooleanField(verbose_name = 'Нужна доставка', default = True)
+										max_length = 32,
+										default='000',
+										blank = True,
+										)
+	shipping 		= models.CharField(verbose_name = 'Выберите способ доставки:',
+										max_length = 50,
+										choices = SHIPPINGCHOICES,
+										default = '0',
+										)
 
-	created 		= models.DateTimeField(verbose_name='Создан', auto_now_add=True,)
-	updated 		= models.DateTimeField(verbose_name='Обновлен', auto_now=True,)
-	# paid = models.BooleanField(verbose_name='Оплачен', default=False)
+	created 		= models.DateTimeField(verbose_name='Создан',
+										auto_now_add=True,
+										)
+	updated 		= models.DateTimeField(verbose_name='Обновлен',
+										auto_now=True,
+										)
 
 	class Meta:
 		ordering 			= ('-created', )
@@ -75,13 +94,13 @@ class Order(models.Model):
 	def get_absolute_url(self):
 		return reverse('orders:ThanksForOrder', kwargs={'pk': self.pk})
 
+	@property
+	def shipping_state(self):
+		if self.shipping=='0':
+			return True
+		return False
 
-def pre_save_receiver_page_model(sender, instance, *args, **kwargs):
-	if instance.shipping == 'с доставкой' or instance.shipping == '':
-		instance.shipping_state = True
-	else: instance.shipping_state = False
 
-pre_save.connect(pre_save_receiver_page_model, sender=Order)
 
 def post_save_receiver_order_model(sender, instance, created, **kwargs):
 

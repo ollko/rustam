@@ -20,10 +20,17 @@
 
 	<div class="col-md-4 col-sm-12">
 		<form action="" method="post">
-		{{form.errors}}
+		{{ form.errors}}
 			<h3>Получатель:</h3><hr>
-			
+			{% comment %}
+			<div class="form-group">
+	            <label class="control-label">Логин:</label>
+				<div class="my-auth-user">{{user.email}}</div>
+			</div>
+			{% endcomment %}
+
 				{{ form.user|bootstrap }}
+			
 				{{ form.full_name|bootstrap }}
 				{{ form.phone|bootstrap }}
 			<br>
