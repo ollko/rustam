@@ -3,11 +3,17 @@
 
 {% block content %}
 <div class="my-form">
+    <a href="/" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </a>
 	<h4 class="text-center">Хотите изменить свой профиль?</h4><br>
 		
-	<form action="" method="post" >
+	<form action="" method="post" novalidate >
 			{% csrf_token %}
-		{{form.user|bootstrap}}	
+		<div class="form-group">
+	            
+				<div class="my-auth-user">{{user.email}}</div>
+			</div>
 		{{form.full_name|bootstrap}}
 		{{form.phone|bootstrap}}
 		{{form.address|bootstrap}}

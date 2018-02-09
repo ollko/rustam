@@ -8,7 +8,7 @@
 <p class="text-danger">Электронный адрес либо пароль указаны неверно. Попробуйте еще раз.</p>
 {% endif %}
 
-{% if next %}
+{% if next and next != '/orders/create/' %}
     {% if user.is_authenticated %}
     <p>У вас нет прав для доступа к этой странице. Для того, чтобы продолжить,
     пожалуйста, войдите в систему под другим именем, имеющим такой доступ.</p>
@@ -37,6 +37,7 @@
         </div>
     </div>
     <hr>
+    {% if next and next == '/orders/create/' %}
     <div class="row">
         
         <div class="col-md-12">
@@ -45,7 +46,8 @@
             <a href="{% url 'orders:OrderCreateGuest' %}" role="button" class="btn btn-primary">Без регистрации</a>
         </div>
     </div>
-       
+    {% endif %}
+   
     </form>
 </div>
 

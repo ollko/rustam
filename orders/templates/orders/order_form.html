@@ -19,18 +19,17 @@
 	</div>
 
 	<div class="col-md-4 col-sm-12">
-		<form action="" method="post">
-		{{ form.errors}}
+		<form action="" method="post" novalidate>
 			<h3>Получатель:</h3><hr>
-			{% comment %}
+			{% if request.user.is_authenticated %}
 			<div class="form-group">
 	            <label class="control-label">Логин:</label>
 				<div class="my-auth-user">{{user.email}}</div>
 			</div>
-			{% endcomment %}
+			{% else %}
 
 				{{ form.user|bootstrap }}
-			
+			{% endif %}
 				{{ form.full_name|bootstrap }}
 				{{ form.phone|bootstrap }}
 			<br>

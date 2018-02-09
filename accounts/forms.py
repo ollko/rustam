@@ -87,17 +87,16 @@ class UserAdminChangeForm(forms.ModelForm):
 class CurrentUserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        # fields = ('full_name','phone','address','postal_code','city',)
-        fields = ('user','full_name','phone','address',)
-
+        # fields = ('user','full_name','phone','address',)
+        fields = ('full_name','phone','address',)
 
     def __init__(self, *args, **kwargs):
         super(CurrentUserProfileForm, self).__init__(*args, **kwargs)
-        instance = getattr(self, 'instance', None)
+        # instance = getattr(self, 'instance', None)
 
-        if instance and instance.id:
-            self.fields['user'].required = False
-            self.fields['user'].widget.attrs['disabled'] = 'disabled'
+        # if instance and instance.id:
+        #     self.fields['user'].required = False
+        #     self.fields['user'].widget.attrs['disabled'] = 'disabled'
 
         self.fields['full_name'].widget.attrs['placeholder'] = u'Василий Баранов'
         self.fields['phone'].widget.attrs['placeholder'] = u'+71234567890'
@@ -105,13 +104,13 @@ class CurrentUserProfileForm(forms.ModelForm):
 
 
 
-    def clean_user(self):
+    # def clean_user(self):
         
-        instance = getattr(self, 'instance', None)
-        if instance :
-            return instance.user
-        else:
-            return self.cleaned_data.get('user', None)
+    #     instance = getattr(self, 'instance', None)
+    #     if instance :
+    #         return instance.user
+    #     else:
+    #         return self.cleaned_data.get('user', None)
 
 
 class UserCreationForm(UserAdminCreationForm):

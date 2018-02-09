@@ -60,7 +60,7 @@ from .models import SHIPPINGCHOICES
 
 class OrderCreateForm(CurrentUserProfileForm):
 	"""Includes fields:
-	'user'  (uneditable field),
+	
 	'full_name',
 	'phone',
 	'address',
@@ -69,27 +69,26 @@ class OrderCreateForm(CurrentUserProfileForm):
 	shipping = forms.ChoiceField(label='',required = True, widget=forms.RadioSelect, 
 				choices=SHIPPINGCHOICES, initial=('0', 'Доставка в пределах Восточного Округа Москвы'))
 	
-	def __init__(self, *args, **kwargs):
-		super(OrderCreateForm, self).__init__(*args, **kwargs)
-		self.fields['user'].required = False
-		self.fields['user'].widget.attrs['disabled'] = 'disabled'
+	# def __init__(self, *args, **kwargs):
+	# 	super(OrderCreateForm, self).__init__(*args, **kwargs)
+		# self.fields['user'].required = False
+		# self.fields['user'].widget.attrs['disabled'] = 'disabled'
 
 
-	def clean_user(self):
+	def clean_user(self):		
 		pass
-		# return self.initial["user"]
+		
 
 	def clean(self):
-		super(OrderCreateForm, self).clean()
-		# print 'type(cleaned_data)=',type(cleaned_data)
-
+		cleaned_data =super(OrderCreateForm, self).clean()
 		shipping = self.cleaned_data.get("shipping")
 		address = self.cleaned_data.get("address")
-	
-		if shipping==u'0' and address==None :
 
-			raise forms.ValidationError("Введите адрес доставки!")
-		return address
+		if shipping==u'0' and address==None :
+			msg ="Введите адрес доставки!"
+			self.add_error('address', msg)
+            
+	
 
 class OrderForGestCreateForm(GuestUserProfileForm):
 	"""Includes fields:
@@ -104,12 +103,10 @@ class OrderForGestCreateForm(GuestUserProfileForm):
 				choices=SHIPPINGCHOICES, initial=('0', 'Доставка в пределах Восточного Округа Москвы'))
 	
 	def clean(self):
-		super(OrderForGestCreateForm, self).clean()
-		print '11111111111111'
+		cleaned_data =super(OrderForGestCreateForm, self).clean()
 		shipping = self.cleaned_data.get("shipping")
 		address = self.cleaned_data.get("address")
-	
-		if shipping==u'0' and address==None :
 
-			raise forms.ValidationError("Введите адрес доставки!")
-		return address
+		if shipping==u'0' and address==None :
+			msg ="Введите адрес доставки!"
+			self.add_error('address', msg)

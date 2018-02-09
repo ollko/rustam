@@ -81,8 +81,8 @@ class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 		"""
 		initial = super(CreateOrderView, self).get_initial()
 		
-		user 	= self.request.user
-		initial['user'] 		= user
+		user = self.request.user
+		initial['user'] 		= user.id
 		
 		try:
 			p = user.profile
@@ -98,6 +98,7 @@ class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 
 		
 	def form_invalid(self, form):
+
 		# user 	= self.request.user
 		# form.initial['user'] 		= user
 		return super(CreateOrderView, self).form_invalid(form)
@@ -107,7 +108,7 @@ class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 		If the form is valid, redirect to the supplied URL.
 		"""
 		user 	= self.request.user
-	
+		
 		try:
 			p = user.profile
 		except ObjectDoesNotExist:
@@ -119,7 +120,7 @@ class CreateOrderView(LoginRequiredMixin, CategoryListMixin, FormView):
 		p.address 		= form.cleaned_data['address']
 
 		p.save()
-
+		
 		o 	= Order(user=user,
 					session_key=self.request.session.session_key,
 					shipping = form.cleaned_data['shipping'])
