@@ -13,7 +13,7 @@ from generic.mixins import CategoryListMixin
 from shop.models import Product
 from cart.forms import CartAddProductForm
 
-
+from django.db.models import Q
 
 
 class HomeView(CategoryListMixin, ListView):
@@ -38,10 +38,10 @@ class SearchView(CategoryListMixin, ListView):
 		return context
 
 	def get_queryset(self):
-		qs = Product.objects.all()
+		qs = Product.objects.all()		
 		query = self.request.GET.get('q')
-		if query is not None:
-			qs = qs.filter(name__icontains=query)
+		if query is not '':
+			qs = qs.filter(Q(name__icontains=query) | Q(category__name__icontains=query)).distinct()
 			return qs
 		return
 
