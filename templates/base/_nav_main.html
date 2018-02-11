@@ -21,28 +21,11 @@
       <li class="nav-item {% if contacts == current_url %}active{% endif %}">
         <a class="nav-link" href="{% url 'home:contacts' %}">Контакты</a>
       </li>
-    {% comment %}
-    {% if user.is_authenticated %}
-    
-<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="{% static 'img/user-24.png' %}">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          
-          <a class="dropdown-item" href="{% url 'accounts:profile' request.user.id %}">Мой профиль</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'accounts:logout' %}">Выход</a>
-        </div>
+      <li class="nav-item {% if contacts == current_url %}active{% endif %}">
+        {% include 'base/_form_search.html' %}
       </li>
-    {% else %}
-      <li class="nav-item {% if 1 == current_url %}active{% endif %}">
-          <a class="nav-link" href="{% url 'accounts:login' %}?next={% if cart|length %}{% url 'cart:CartDetail' %}{% elif current_url %}{{current_url}}{% else %}'/'{% endif %}">Вход</a>
-      </li>
-    {% endif %}
-  {% endcomment %}
     </ul>
-    {% include 'base/_form_search.html' %}
+    
   </div>
   
 </nav>

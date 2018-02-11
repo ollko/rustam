@@ -1,22 +1,31 @@
 {% load static %}
 
+
 {% comment %}
-<form class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-
-
- <form action="{% url 'home:search' %}" class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Новый поиск" aria-label="Поиск" name="q">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="{% static 'img/cart-26.png' %}"</button>
-  </form>
-{% endcomment %}
-
-
 <div class="input-group">
-      <input class="form-control" type="search" placeholder="Новый поиск" aria-label="Поиск" name="q">
+      <input class="form-control" type="search" placeholder="Поиск ..." aria-label="Поиск" name="q">
             <span class="input-group-btn">
-           <input type="submit" value="" class='btn btn-default'>
+           <!-- <input type="submit" value="" class='btn btn-default'> -->
+           <!-- <input type="image" src="{% static 'img/icons8-26.png' %}" class='btn btn-default'> -->
+           <input type="search" results="5" name="q">
+
             </span>
 </div> <!-- input-group --> 
+
+
+<form action="{% url 'home:search' %}">	
+	<div class="search" style="position:relative;">
+		<span style= "position: absolute;  top: 7px;  left: 5px;"><img src="{% static 'img/icons8-32.png' %}"></span>
+		<input class="form-control" type="search" placeholder="Поиск ..." aria-label="Поиск" name="q" style="text-indent:28px;">
+	</div>
+</form>
+{% endcomment %}
+<form action="{% url 'home:search' %}">	
+	<div class="input-group" >
+		
+		<input class="form-control" type="search" placeholder="Поиск ..." aria-label="Поиск" name="q" >
+			<span class="input-group-btn">
+				<button type="submit"><img src="{% static 'img/icons8-24.png' %}"></button>
+			</span>
+	</div>
+</form>
