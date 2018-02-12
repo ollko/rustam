@@ -119,7 +119,11 @@ class UserCreationForm(UserAdminCreationForm):
     """
     consent = forms.BooleanField(required=True)
 
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm, self).__init__(*args, **kwargs)    
+        self.fields['consent'].widget.attrs['checked'] = 'checked'
 
+        
 
 class GuestUserProfileForm(forms.ModelForm):
 
