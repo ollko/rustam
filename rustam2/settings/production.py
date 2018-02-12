@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'rustam2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'u67523_rustam_2',
+        'NAME': 'u67523_rustam2',
         'USER': 'u67523',
         'PASSWORD': 'mpKYoiAunR3bUtY',
         'HOST': 'localhost',
