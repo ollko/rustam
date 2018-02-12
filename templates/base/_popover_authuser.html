@@ -4,7 +4,7 @@
 
 <div id="popover-content-authUser" style="display: none">
 {% if request.user.profile %}     
-	<a class="dropdown-item" href="{% url 'accounts:profile' user.id next=current_url %}">{{ request.user.email }}</a>
+	<a class="dropdown-item" href="{% url 'accounts:profile' user.id %}?next={{ current_url }}">{{ request.user.email }}</a>
 	{% else %}
 	<a class="dropdown-item" href="#">{{ request.user.email }}</a>
 	{% endif %}
