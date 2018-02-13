@@ -64,7 +64,7 @@ class Order(models.Model):
 										blank = True,
 										)
 	shipping 		= models.CharField(verbose_name = 'Выберите способ доставки:',
-										max_length = 50,
+										max_length = 1,
 										choices = SHIPPINGCHOICES,
 										default = '0',
 										)
@@ -75,6 +75,8 @@ class Order(models.Model):
 	updated 		= models.DateTimeField(verbose_name='Обновлен',
 										auto_now=True,
 										)
+
+
 
 	class Meta:
 		ordering 			= ('-created', )
@@ -95,10 +97,50 @@ class Order(models.Model):
 		return reverse('orders:ThanksForOrder', kwargs={'pk': self.pk})
 
 	@property
-	def shipping_state(self):
+	def shipping_boolean(self):
 		if self.shipping=='0':
 			return True
 		return False
+
+	@property
+	def shipping_status(self):
+		if self.shipping=='0':
+			return 'С доставкой'
+		return 'Самовывоз'	
+
+	# @property
+	# def user_status(self):
+	# 	if self.user:
+	# 		return 'С регистрацией'
+	# 	if self.guest_profile:
+	# 		return 'Без регистрации'
+
+
+	def user_status_property(self):
+		if self.user:
+			return 'С регистрацией'
+		if self.guest_profile:
+			return 'Без регистрации'
+	user_status_property.short_description = 'Статус клиента'	
+
+	user_status = property(user_status_property)
+
+
+	# @property
+	# def user_email(self):
+	# 	if self.user:
+	# 		return self.user.email
+	# 	if self.guest_profile:
+	# 		return self.guest_profile.user
+
+	def user_email_property(self):
+		if self.user:
+			return self.user.email
+		if self.guest_profile:
+			return self.guest_profile.user
+	user_email_property.short_description = 'Электронная почта'	
+
+	user_email = property(user_email_property)
 
 
 
@@ -145,7 +187,7 @@ post_save.connect(post_save_receiver_order_model, sender=Order)
 
 class Orderitem(models.Model):
 	order = models.ForeignKey(Order, related_name='items',on_delete = models.CASCADE)
-	product = models.ForeignKey(Product, related_name='order_items')
+	product = models.ForeignKey(Product, verbose_name='Позиция заказа', related_name='order_items')
 	price = models.DecimalField(verbose_name='Цена', max_digits=10, decimal_places=2)
 	quantity = models.PositiveIntegerField(verbose_name='Количество', default=1)
 

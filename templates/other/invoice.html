@@ -89,10 +89,17 @@
             </div>
         <div>
         <div class='details'>      
-            Информация о клиенте: <b>{{ order.user.email }}, {{ order.user.profile.full_name }}, {{ order.user.profile.phone }}</b><br/>
-            Способ доставки: <b>{{ order.shipping }}</b><br/>
+            Информация о клиенте: 
+            {% if order.user %}
+                <b>{{ order.user.email }}, {{ order.user.profile.full_name }}, {{ order.user.profile.phone }}</b><br/>
+            {% else %}
+                 <b>{{ order.guest_profile.user }}, {{ order.guest_profile.full_name }}, {{ order.guest_profile.phone }}</b><br/>
+            {% endif %}
+            Способ доставки: <b>{{ order.shipping_status }}</b><br/>
+            {% if order.user.profile.address %}
             Адрес доставки: <b>{{ order.user.profile.address }}</b><br/>
-            {% if order.shipping_state %}
+            {% endif %}
+            {% if order.shipping_boolean %}
             Сумма к оплате: <b>{{ order.get_total_cost|add:"500"|floatformat:"2" }} руб.</b><br/>
             {% else %}
             Сумма к оплате: <b>{{order.get_total_cost}}  руб.</b><br/>
@@ -124,7 +131,7 @@
                         
                     </tr>
                     {% endfor %}
-                    {% if order.shipping_state %}
+                    {% if order.shipping_boolean %}
                     <tr class="total-row">                       
                         <td></td>
                         <td></td>
