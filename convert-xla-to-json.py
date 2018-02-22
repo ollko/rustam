@@ -5,9 +5,12 @@ import json
 
 import datetime
 import pytz
+import os
 
 wb = xlrd.open_workbook('list-of-products_2.xls')
 sh = wb.sheet_by_index(1)
+
+list_of_files= os.listdir('uploads/pic_of_product/')
 
 products_list = []
 tz            = pytz.timezone('Europe/Moscow')
@@ -23,7 +26,13 @@ for rownum in range(1, sh.nrows):
 
 	product['fields']['name'] = row_values[13]
 	product['fields']['slug'] = 'page-slug'
-	product['fields']['image'] = ''
+
+	n = str(rownum)+".jpg"
+	if n in list_of_files:
+		product['fields']['image'] = "pic_of_product/"+n
+	else:
+		product['fields']['image'] = ""
+
 	product['fields']['article'] = "0000000000000"
 	product['fields']['price'] = row_values[14]
 	product['fields']['available'] = True

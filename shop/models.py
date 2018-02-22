@@ -35,7 +35,7 @@ class Product(models.Model):
     category    = TreeForeignKey('Category', null=True, blank=True, db_index=True, related_name='cat', verbose_name=u"Категория")
     name        = models.CharField(max_length=200, db_index=True, verbose_name=u"Название")
     slug        = models.SlugField(max_length=200, db_index=True, default='page-slug', blank=True)
-    image       = models.ImageField(upload_to='%Y/%m/',blank=True, null=True, default=None,
+    image       = models.ImageField(upload_to='pic_of_product/',blank=True, null=True, default=None,
                                  verbose_name=u"Изображение товара")
     packaging   = models.CharField(max_length=20, verbose_name=u"Упаковка", blank=True, null=True, default=None)
 
