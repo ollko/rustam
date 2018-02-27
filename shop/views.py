@@ -59,7 +59,19 @@ class ProductDetail(DetailView, CategoryListMixin):
 	def get_context_data(self, **kwargs):
 		context = super(ProductDetail, self).get_context_data(**kwargs)
 		context['category'] = Category.objects.get(cat=self.kwargs['pk'])
+		print 'context["category"]=', context['category'].__dict__
 		# Вместо 'cat' может быть - cat, children, id, level, lft, name, parent, parent_id, rght, slug, tree_id
 		context['cart_product_form'] = CartAddProductForm()
 
 		return context 
+
+	def get_object(self, queryset=None):
+		'''
+		Проверяется правильный ли slug для страницы товара, 
+		а затем возвращает obj
+		'''
+		obj = super(ProductDetail, self).get_object(queryset=queryset)
+		if obj.slug != self.kwargs['slug']:
+			raise Http404("Страница не найдена")
+		return obj
+

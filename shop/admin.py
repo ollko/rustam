@@ -21,6 +21,11 @@ class ProductAdmin(admin.ModelAdmin):
 
         return super(ProductAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
+    search_fields = ('name',)
+    ordering = ('id',)
+    filter_horizontal = ()
+
+
 admin.site.register(Product,ProductAdmin)
 
 # admin.site.register(Category, MPTTModelAdmin)
@@ -30,6 +35,9 @@ admin.site.register(Product,ProductAdmin)
 	# mptt_level_indent = 20
 
 # admin.site.register(Category, CustomMPTTModelAdmin)
+
+
+
 
 admin.site.register(
     Category,
@@ -46,4 +54,5 @@ admin.site.register(
     list_display_links=(
         'indented_title',
     ),
+    search_fields = ('name',)
 )
