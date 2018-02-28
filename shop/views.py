@@ -24,6 +24,7 @@ class ProductList(ListView, CategoryListMixin):
 	model = Product
 	context_object_name = 'products'
 	template_name = 'shop/product_list.html'
+	paginate_by = 6
 
 	def get_queryset(self):
 		'''список продуктов для меню с двумя уровнями влоденности
