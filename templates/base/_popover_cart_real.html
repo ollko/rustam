@@ -9,7 +9,7 @@
 
 
 {% else %}
-  <a tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><img src="{% static 'img/cart-26.png' %}"><small><span class="align-top cart-length">{{cart|length}}</span></small></a>
+  <a style="text-decoration:none" tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><span class="icon-cart"><small><span class="align-top cart-length">{{cart|length}}</span></small></a>
 {% endif %}
 
 <div id="popover-content-cart" style="display: none">

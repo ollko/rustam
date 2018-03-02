@@ -1,0 +1,56 @@
+{% load static %}
+
+
+	<thead>
+		<tr>
+			<th >Товар</th>
+			<th >Товар</th>
+			<th ></th>
+			<th >Цена</th>
+			<th>Купить</th>
+		</tr>
+	</thead>
+  <tbody>
+ 
+  {% for product in products %}
+
+	<tr>
+		<td style="width:125.5px">
+			<a href="{{ product.get_absolute_url }}">
+			{% if product.image %}
+				<img style ="width:100%" class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+			{% else %}
+				<div class='no-product-img' style="width:7em;heigth:7em"></div>
+			{% endif %}
+			</a>
+		</td> 
+		<td>
+			<p >{{ product.name }}</p>
+		</td>
+		<td>
+			{% if product.packaging %}
+			<p>{{ product.packaging }}</p>
+			{% endif %}
+		</td>
+		<td>
+			<p><b>{{ product.price|floatformat:"-2" }} руб.</b>{% if product.typeprice%}  {{ product.typeprice }} </p>{% endif %}
+		</td>
+		<td>
+	      	<form action="{% url 'cart:CartAdd' product.id %}" method="post">
+				<div class="input-group">
+					{% csrf_token %}
+					
+					{{ cart_product_form.quantity }}
+					
+					{{ cart_product_form.update }}			
+					<input type="submit" class="btn btn-primary btn-sm " value="В корзину">
+				</div>
+			</form>
+		</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+
+
+

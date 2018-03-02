@@ -1,8 +1,9 @@
 {% load static %}
 
 
+{% for product in products %}
 
-<div class="col-6 col-lg-2 col-product">
+	<div class="col-6 col-lg-2 col-product">
 		<div class="card my-card" >
 			<a class="a-my-card" href="{{ product.get_absolute_url }}">
 				
@@ -30,5 +31,5 @@
 				</form>			
 			</div>
 		</div>
-	</div><!--/span-->
-	
+	</div>
+{% endfor %}

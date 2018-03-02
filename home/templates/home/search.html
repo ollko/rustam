@@ -5,14 +5,28 @@
 {% endblock %}
 
 {% block content %}
-
+	
 {% if products %}
-	<h3>Результаты поиска:</h3>
 	<div class="row">
-		{% for product in products %}
-			{% include 'base/_product_cards.html' %}
-		{% endfor %}
-	</div><!--/row-->
+		<div class=" col-10 bread-crambs">
+			<p class="h3">Результаты поиска:</p>
+		</div>
+		<div class="col-2 text-right">	
+			<span class="icon-grid icon icon-1" ></span>
+			<span class="icon-list icon icon-2"></span>	
+		</div>
+	</div>
+		
+	<div class="row grid-prodacts-view products-view products-view-1">
+		{% include 'base/_product_cards.html' %}
+	</div>	
+	<table class="table list-products-view products-view products-view-2" style="display:none">
+		{% include 'base/_product_table.html' %}
+	</table>
+
+	<div class='pagination p-2'>
+		{% include 'base/_pagination.html' %}
+	</div>
 {% else %}
 	<h4>К сожалению, по вашему запросу ничего не найдено.</h4>
 	<h5>Попробуйтe сформулировать запрос по-другому.</h5>

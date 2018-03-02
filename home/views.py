@@ -30,8 +30,8 @@ class HomeView(CategoryListMixin, ListView):
 class SearchView(CategoryListMixin, ListView):
 	model = Product
 	template_name = "home/search.html"
-	# queryset = Product.objects.all().order_by('-created')[:6]
 	context_object_name = 'products'
+	
 	def get_context_data(self, **kwargs):
 		context            = super(SearchView, self).get_context_data(**kwargs)
 		context['cart_product_form'] = CartAddProductForm()
