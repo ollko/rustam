@@ -76,3 +76,12 @@
 .icon-user:before {
   content: "\e909";
 }
+
+div#togle-icons-list-grid{
+    display: none;
+  }
+@media (min-width: 768px) {
+  div#togle-icons-list-grid{
+    display: block;
+  }
+}
