@@ -34,7 +34,6 @@ function hideAllViews(){
 	for (var i=0; i<productViews.length; i++){
 		$(productViews[i]).hide();
 	}
-
 }
 
 function bindIconToView(idNumber){

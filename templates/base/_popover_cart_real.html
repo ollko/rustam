@@ -1,12 +1,8 @@
 {% load static %}
 {% if not cart|length %}
-  <img src="{% static 'img/cart-26.png' %}">
+  <span class="icon-cart">
 
-{% elif current_url == '/cart/' or current_url == '/orders/create/'%}
-
-<img src="{% static 'img/cart-26.png' %}"><small><span class="align-top cart-length">{{cart|length}}</span></small>
-
-
+	{% if current_url == '/cart/' or current_url == '/orders/create/'%}<span class="icon-cart"><small><span class="align-top cart-length">{{cart|length}}</span></small>{% endif %}
 
 {% else %}
   <a style="text-decoration:none" tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><span class="icon-cart"><small><span class="align-top cart-length">{{cart|length}}</span></small></a>
