@@ -57,5 +57,6 @@ for (var i=1; i<=icons.length; i++){
 }
 
 hideAllViews();
-$(".products-view-1").show();
-$(".icon-1").addClass("dark");
+$(".products-view-2").show();
+$(".icon-2").addClass("dark");
+// ---/ Переключение grid/list of Products
