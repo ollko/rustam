@@ -3,7 +3,7 @@
 <a style="text-decoration:none" tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="authUser" data-trigger="click hover"><span class="icon-user" ></span></a>
 
 <div id="popover-content-authUser" style="display: none">
-{% if request.user.profile %}     
+	{% if request.user.profile %}     
 	<a class="dropdown-item" href="{% url 'accounts:profile' user.id %}?next={{ current_url }}">{{ request.user.email }}</a>
 	{% else %}
 	<a class="dropdown-item" href="#">{{ request.user.email }}</a>
@@ -11,7 +11,10 @@
 	<div class="dropdown-divider"></div>
 	<a class="dropdown-item" href="{% url 'accounts:logout_then_login' %}">Войти под другим <b>логином</b></a>       
 </div>
-
-{% else %}
-<a href="{% url 'accounts:login' %}">Вход</a>
 {% endif %}
+
+{% if current_url == '/accounts/login/' or current_url == '/accounts/createuser/' %}
+{% else %}
+<a href="{% url 'accounts:login' %}">Вход </a>|<a href="{% url 'accounts:login' %}"> Регистрация</a>
+{% endif %}
+

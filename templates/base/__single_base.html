@@ -6,26 +6,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../../../favicon.ico">
+		<link rel="icon" href="{% static 'img/favicon.ico' %}">
 
 		{% block title %}
-		<title>Магазин хозяйственных товаров</title>
+		<title>Магазин расходных материалов для бизнеса</title>
 		{% endblock %}
 
 		{% block css %}
-			<!-- Bootstrap core CSS -->
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
-			<!-- Custom styles for this template -->
-			<link href="{% static 'css/offcanvas.css' %}" rel="stylesheet">
-			<link href="{% static 'css/main.css' %}" rel="stylesheet">
-			<!--[if !IE]><!-->
-			<!-- Responsive-table do not work for IE -->
-			<link href="{% static 'css/responsive_cart.css' %}" rel="stylesheet">
-			<!--<![endif]-->
-			<!-- Иконки в виде шрифта -->
-			<link rel="stylesheet" href="{% static 'css/rustam-fonts-style.css' %}" >
+			{% include 'base/_css.html' %}
 		{% endblock %}
+
 
 		{% block metrika %}
 			{% include 'base/_metrika.html' %}
@@ -37,31 +27,26 @@
 			<header class="masthead">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-12 col-md-6">
-							<h2 class="text-muted">
-								<a style="text-decoration:none" href="/">Магазин хозяйственных товаров</a>
-							</h2>
+			            <div class="col-12 col-md-4">
+							<a style="text-decoration:none" href="/">
+				                <img src="{% static 'img/posuda-pls.ru.svg' %}">                
+							</a>            
+						</div><!-- col-12 col-md-4 -->
+						<div class="col-12 col-md-5" style="padding:1em">
+								{% include 'base/_form_search.html' %}
 						</div>
-						<div class="col-12 col-md-2">
-							<div class='tel'>+7 (910) 480-81-86</div>
-						</div>
-						<div class="col-12 col-md-2">
+						<div class="col-12 col-md-3 text-right align-self-end">
 							<div class="email">
-								<a href="mailto:#">rusglomer@mail.ru</a>
+								<div class='tel h3' style="margin-bottom:0; color:#ff0c00">+7 (910) 480-81-86</div>
+								<a href="mailto:#" style="margin-bottom:1em; color:#343b40">rusglomer@mail.ru</a>
+								<div style="padding-top:.5em">
+									<span style="margin:0 1em">{% include 'base/_popover_authuser.html' %}</span>
+									<span style="margin:0 1em">{% include 'base/_popover_cart_real.html' %}</span>
+								</div>
 							</div>             
-							<div class="url">
-								<a href="#">posuda-pls.ru</a>
-							</div>
 						</div >             
-
-						<div class="cart col-6 col-md-1 text-right">              
-							{% include 'base/_popover_authuser.html' %}
-						</div>
-						<div class="cart col-6 col-md-1 text-center">     
-							{% include 'base/_popover_cart_real.html' %} 
-						</div>              
 					</div>
-				</div>      
+				</div>       
 
 				{% block nav_main %}
 					{% include 'base/_nav_main.html' %}

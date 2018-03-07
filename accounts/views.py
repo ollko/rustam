@@ -13,8 +13,7 @@ from .forms import CurrentUserProfileForm
 from accounts.forms import  UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-
+from django.contrib.auth import views as auth_views
 
 User = get_user_model()
 
@@ -48,3 +47,5 @@ class ConfirmView(TemplateView):
 	template_name = 'accounts/confirm.html'
 
 
+class MyLoginView(CategoryListMixin, auth_views.LoginView):
+	template_name='accounts/login.html'

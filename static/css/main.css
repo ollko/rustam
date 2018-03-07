@@ -1,7 +1,6 @@
 body{
 	padding-top: 20px;
-  /*font-family: 'Fira Sans Condensed', sans-serif;*/
-  /*font-family: 'Alegreya Sans', sans-serif;*/
+  background-color: #e4f5f4;
 }
 
 div.my-jumbotron{
@@ -313,3 +312,16 @@ div.my-auth-user{
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
+@media and screen (max-width: 414px) {
+  
+}
+/*search form*/
+
+[type=search], button.button-search{
+  border-color: #3e964e;
+}
+button.button-search{
+  background-color: #3e964e;
+  color: #ffffff;
+}
+/* /search form*/
