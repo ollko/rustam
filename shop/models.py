@@ -46,9 +46,15 @@ class Product(models.Model):
                                     blank=True, null=True, default=None)
     manufacture = models.CharField(max_length=20, verbose_name=u"Производитель", 
                                     blank=True, null=True, default=None)
-    available   = models.BooleanField(default=True, verbose_name=u"в наличии")
+    in_stock    = models.BooleanField(
+                                    default  =True,
+                                    db_index = True,
+                                    verbose_name=u"в наличии")
     created     = models.DateTimeField(auto_now_add=True, db_index=True)
     updated     = models.DateTimeField(auto_now=True)
+    popular     = models.BooleanField(
+                        default = False,
+                        verbose_name = 'в разделе "Популярные товары"')
 
     class Meta:
         ordering = ['name']

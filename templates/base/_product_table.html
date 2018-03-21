@@ -36,6 +36,7 @@
 			<p><b>{{ product.price|floatformat:"-2" }} руб.</b>{% if product.typeprice%}  {{ product.typeprice }} </p>{% endif %}
 		</td>
 		<td>
+		{% if product.in_stock %}			
 	      	<form action="{% url 'cart:CartAdd' product.id %}" method="post">
 				<div class="input-group">
 					{% csrf_token %}
@@ -46,6 +47,9 @@
 					<input type="submit" class="btn btn-primary btn-sm " value="В корзину">
 				</div>
 			</form>
+		{% else %}
+			<p class="text-muted text-right in-stock">нет в наличии</p>
+		{% endif %}
 		</td>
     </tr>
     {% endfor %}

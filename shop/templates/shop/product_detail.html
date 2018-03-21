@@ -45,19 +45,24 @@
 	<div class="col-6 col-lg-6">
 		
 			<div class="card-body">
-				<h5 class="card-title">{{ product.name }}</h5>
-				{% if product.packaging %}<p class="card-text">{{ product.packaging }}</p>{% endif %}
-				{% if product.manufacture %}<p class="card-text">Изготовитель: {{ product.manufacture }}</p>{% endif %}
-				<p class="card-text ">{{ product.price }} руб. {% if product.typeprice %} ({{ product.typeprice }}){% endif %}</p>
+				<h5 class="card-title text-right">{{ product.name }}</h5>
+				{% if product.packaging %}<p class="card-text text-right">{{ product.packaging }}</p>{% endif %}
+				{% if product.manufacture %}<p class="card-text text-right">Изготовитель: {{ product.manufacture }}</p>{% endif %}
+				<p class="card-text text-right">{{ product.price }} руб. {% if product.typeprice %} ({{ product.typeprice }}){% endif %}</p>
 				
-				<form action="{% url "cart:CartAdd" product.id %}" method="post">
-					<div class="input-group">
-						{{ cart_product_form }}
-						{% csrf_token %}
-						<input type="submit" class="btn btn-primary btn-sm" value="В корзину">
-					</div>
-				</form>
-				<!-- <a href="#" class="btn btn-primary">В корзину</a> -->
+				{% if product.in_stock %}
+				<p class="text-muted text-right in-stock">в наличии</p>
+				<div class="float-right">
+					<form action="{% url "cart:CartAdd" product.id %}" method="post" class=" float-left">
+						<div class="input-group">
+							{{ cart_product_form }}
+							{% csrf_token %}
+							<input type="submit" class="btn btn-primary btn-sm" value="В корзину">
+						</div>
+					</form>
+				</div>				
+				{% else %}<p class="text-muted text-right in-stock">нет в наличии</p>
+				{% endif %}
 			</div>
 		
 	</div><!--/span-->

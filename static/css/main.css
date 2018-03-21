@@ -29,7 +29,9 @@ span.cart-length{
   color:#35b05f;
   font-weight:800;
 }
-
+p.in-stock{
+  margin: 0.35em 0;
+}
 
 /* /cart */
 
