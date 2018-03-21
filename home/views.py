@@ -19,7 +19,7 @@ from django.db.models import Q
 class HomeView(CategoryListMixin, ListView):
 	model = Product
 	template_name = "home/home.html"
-	queryset = Product.objects.all().order_by('-created')[:6]
+	queryset = Product.objects.all().filter(popular = True).exclude(in_stock = False)
 	context_object_name = 'products'
 	def get_context_data(self, **kwargs):
 		context            				= super(HomeView, self).get_context_data(**kwargs)
