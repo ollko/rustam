@@ -325,3 +325,7 @@ button.button-search{
   color: #ffffff;
 }
 /* /search form*/
+
+.img-hover:hover{
+  padding: -3em;
+}

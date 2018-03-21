@@ -67,5 +67,4 @@ else{
 	$(".products-view-2").show();
 	$(".icon-2").addClass("dark");
 }
-
 // ---/ Переключение grid/list of Products
