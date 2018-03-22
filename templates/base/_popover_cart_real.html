@@ -1,13 +1,18 @@
 {% load static %}
-{% if not cart|length %}
-  <span class="icon-cart">
+{% if not cart|length %}<!-- пустая корзина -->
+	<span class="icon-cart"></span>
 
-	{% if current_url == '/cart/' or current_url == '/orders/create/'%}<span class="icon-cart"><small><span class="align-top cart-length">{{cart|length}}</span></small>{% endif %}
+{% else %}<!-- корзина с содержимым -->
 
-{% else %}
-  <a style="text-decoration:none" tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><span class="icon-cart"><small><span class="align-top cart-length">{{cart|length}}</span></small></a>
+	{% if current_url == '/cart/' or current_url == '/orders/create/'%}
+		<span class="icon-cart"></span><small><span class="align-top cart-length">{{cart|length}}</span></small>
+
+	{% else %}     
+		<a style="text-decoration:none" tabindex="0" data-toggle="popover" data-container="body" data-placement="top"  data-html="true" href="#" id="cart" data-trigger="click hover"><span class="icon-cart"></span><small><span class="align-top cart-length">{{cart|length}}</span></small></a>
+
+		<div id="popover-content-cart" style="display: none">
+			{% include 'base/_cart_table_without_forms.html' %}
+		</div>
+	{% endif %}
+	
 {% endif %}
-
-<div id="popover-content-cart" style="display: none">
-  {% include 'base/_cart_table_without_forms.html' %}
-</div>
