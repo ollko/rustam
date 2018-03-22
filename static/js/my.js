@@ -64,7 +64,7 @@ if (doc_w <= 500){
 	$(".icon-1").addClass("dark");
 }
 else{
-	// $(".products-view-2").show();
-	// $(".icon-2").addClass("dark");
+	$(".products-view-2").show();
+	$(".icon-2").addClass("dark");
 }
 // ---/ Переключение grid/list of Products
