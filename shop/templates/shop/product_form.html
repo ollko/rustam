@@ -1,0 +1,126 @@
+{% extends "base/__single_base.html" %}
+{% load bootstrap %}
+
+
+	{% block title %}
+		<title>Добавление/правка товара</title>
+	{% endblock %}
+
+	{% block metrika %}{% endblock %}
+
+	{% block content %}
+<div class = 'container'>
+	<div class="my-form-header">
+		<a href="/" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+		<h4 class="lead">ДОБАВИТЬ/РЕДАКТИРОВАТЬ ТОВАР</h4>
+	</div>
+	<hr>
+	<form  action="" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col">
+			<p>
+				{{form.image.label}}
+				{{form.image}}
+				{{form.image.errors}}
+			</p>
+		</div>
+		<div class="col">
+			<div class='row justify-content-between'>
+				<div class="col">
+				<p>{{form.category.label}}</p>
+					
+				</div>
+				<div class="col">
+					<p>
+						{{form.category}}
+						{{form.category.errors}}
+					</p>
+				</div>			
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col">
+					<p>
+						{{form.name.label}}
+					</p>					
+				</div>
+				<div class="col-6">
+					{{form.name}}
+					{{form.name.errors}}
+				</div>
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col">
+					<p>{{form.packaging.label}}</p>
+				</div>
+				<div class="col-6">
+					{{form.packaging}}
+					{{form.packaging.errors}}
+				</div>
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col">
+					<p>{{form.article.label}}</p>
+				</div>
+				<div class="col-6">
+					{{form.article}}
+					{{form.article.errors}}
+				</div>
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col">
+					<p>{{form.price.label}}</p>
+				</div>
+				<div class="col-6">
+					{{form.price}}
+					{{form.price.errors}}
+				</div>
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col ">
+					<p>{{form.typeprice.label}}</p>
+				</div>
+					<div class="col-6 align-self-center">
+					{{form.typeprice}}
+					{{form.typeprice.errors}}
+					</div>
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col">
+					<p>{{form.manufacture.label}}</p>
+				</div>
+				<div class="col">
+					{{form.manufacture}}
+					{{form.manufacture.errors}}
+				</div>
+			</div>
+			<div class='row justify-content-between' >
+				<div class="col">
+					<p>{{form.in_stock.label}}</p>
+				</div>
+				<div class="col">
+				{{form.in_stock}}
+				{{form.in_stock.errors}}
+				</div>
+			</div>
+			<div class='row justify-content-between'>
+				<div class="col">
+					<p>{{form.popular.label}}</p>
+				</div>
+				<div class="col align-self-center">
+				{{form.popular}}
+				{{form.popular.errors}}
+				</div>
+			</div>
+		</div>  
+	</div>
+	 
+	<div class="my-form-footer">
+	<a href="/" type="button" class="btn btn-default" >ОТМЕНИТЬ</a>
+	<button type="submit" class="btn btn-success">СОХРАНИТЬ</button>
+	</div>
+
+
+	</form>
+</div>
+	{% endblock %}

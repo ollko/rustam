@@ -1,6 +1,7 @@
 {% extends "base/__base.html" %}
 
 {% load mptt_tags %}
+{% load myfilters %}
 
 {% block title %}
 	<title>Купить {{ category.name }} в Москве</title>
@@ -13,7 +14,13 @@
 
 	{% include 'base/_breadcrambs.html' %}
 
+	{% if user.is_authenticated %}
+		{% if user|has_group:'can_deal_with_products' or user.is_admin %}	
 
+	редактировать
+
+		{% endif %}
+	{% endif %}
 
 
 <div class="row grid-prodacts-view products-view products-view-1">

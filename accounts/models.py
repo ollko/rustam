@@ -10,7 +10,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 from django.contrib.auth.models import (
-	AbstractBaseUser, BaseUserManager
+	AbstractBaseUser,
+	BaseUserManager,
+	PermissionsMixin,
 )
 
 from utils import postal_code_validator
@@ -61,14 +63,15 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
-	email 			= models.EmailField(verbose_name = "Эл. почта:", max_length=255, unique=True)
+class User(AbstractBaseUser, PermissionsMixin):
+	email 				= models.EmailField(verbose_name = "Эл. почта:", max_length=255, unique=True)
 
-	active 			= models.BooleanField(default=True) # can login
-	staff			= models.BooleanField(default=False) # staff user non super
-	admin			= models.BooleanField(default=False) # superuser
-	is_active 		= models.BooleanField(default=True)
-	timestamp		= models.DateTimeField(auto_now_add=True)
+	active 				= models.BooleanField(default=True) # can login
+	staff				= models.BooleanField(default=False) # staff user non super
+	admin				= models.BooleanField(default=False) # superuser
+	is_active 			= models.BooleanField(default=True)
+	woked_products		= models.BooleanField(verbose_name = "Может добавлять/править/удалять товар:", default=False) # can add/change/del product
+	timestamp			= models.DateTimeField(auto_now_add=True)
 	# confirm 		= models.BooleanField(default=False)
 	# confirmed_date	= models.DateTimeField(default=False)
 
@@ -111,6 +114,7 @@ class User(AbstractBaseUser):
 	# @property
 	# def is_active(self):
 	# 	return self.active
+	
 
 class Profile(models.Model):
 	user 			= models.OneToOneField(User,verbose_name='Логин:', on_delete = models.CASCADE)

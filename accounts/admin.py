@@ -38,7 +38,8 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password',)}),
         ('Personal info', {'fields': ()}),
-        ('Permissions', {'fields': ('admin','staff','active',)}),
+        ('Permissions', {'fields': ('is_active', 'staff', 'is_superuser',
+                                       'groups', 'user_permissions')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
@@ -50,12 +51,28 @@ class UserAdmin(BaseUserAdmin):
     )
     search_fields = ('email',)
     ordering = ('email',)
-    filter_horizontal = ()
+    # filter_horizontal = ()
 
     inlines = [ProfileItemInline]
 
+
+    # def save_model(self, request, obj, form, change):
+    # # ADD THE PERMISSIONS HERE LIKE SO:
+    #     obj.save()
+    #     if obj.has_module_perms:
+    #         # This is just an example of a permission you can add
+    #         print '------', obj.get_all_permissions()
+    #         obj.user_permissions.add('catalog.product.can_add', 
+    #             'catalog.product.can_change', 'catalog.product.can_delete')
+    #     else:
+    #         # Remove the permissions in case a user was demoted from teacher status
+    #         obj.user_permissions.remove('catalog.product.can_add', 
+    #             'catalog.product.can_change', 'catalog.product.can_delete')
+    #     obj.save()
+
+
 # Remove Group Model from admin. We're not using it.
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
 
 
 admin.site.register(User, UserAdmin)
