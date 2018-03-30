@@ -1,0 +1,30 @@
+{% extends "base/__base.html" %}
+
+{% load mptt_tags %}
+{% load myfilters %}
+
+{% block title %}
+	<title>Редактирование товара в магазине</title>
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block side_bar %}
+  {% include 'base/_side_bar_for_edit.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% include 'base/_breadcrambs_with_edit.html' %}
+<br>
+<table class="table list-products-view">
+	{% include 'base/_edit_product_row.html' %}
+</table>
+
+<div class='pagination p-2'>
+
+	{% include 'base/_pagination.html' %}
+</div>
+
+{% endblock %}

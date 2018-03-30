@@ -1,0 +1,30 @@
+{% load mptt_tags %}
+
+<div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+<div class="d-sm-none d-md-block">
+	<button type="button" class="btn btn-primary btn-lg btn-block d-none d-md-block" style="font-size:.9em; font-weight:600; color:#ffc107; margin-bottom:.5em;">КАТАЛОГ</button>
+</div>
+
+	<div class="list-group panel my-catalog">
+		{% recursetree nodes %}
+			{% if node.is_leaf_node %}
+			<!-- category level without children-->
+		<a href="{{node.get_absolute_url_with_edit}}" class="list-group-item list-group-item-action collapsed" data-parent="#{{ node.slug }}">{{ node.name|upper }}</a>
+			{% else %}
+			<!-- category level -->
+		<a href="#{{ node.slug }}" class="list-group-item list-group-item-action collapsed{% if not node.is_leaf_node %} not-leaf-node{% endif %}" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false">{{ node.name|upper }} </a>
+			<!-- subcategory level -->
+		<div class="collapse " id="{{ node.slug }}">
+		<div class="list-group children bg-primary" >
+			{% with subnode=node.get_children %}					
+				{% for item in subnode %}
+				<a href="{{item.get_absolute_url_with_edit}}" class="list-group-item list-group-item-action" data-parent="#{{ node.slug }}" style="padding-left: 40px;background-color: #033377;border-color: #1b53a2;">{{ item.name|upper }}</a>
+				{% endfor %}
+            {% endwith %}
+		</div>
+		</div>
+			{% endif %}
+		
+		{% endrecursetree %}
+	</div> 
+</div> 

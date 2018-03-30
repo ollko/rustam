@@ -22,7 +22,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 # 	return render(request,"shop/tree.html",{'nodes':Category.objects.all()})
 
 # Страница товаро из категории:
-class ProductList(ListView, CategoryListMixin):
+class ProductList(CategoryListMixin, ListView):
 
 	model = Product
 	context_object_name = 'products'
@@ -57,7 +57,7 @@ class ProductList(ListView, CategoryListMixin):
 		return context
 
 # Страница товара
-class ProductDetail(DetailView, CategoryListMixin):
+class ProductDetail(CategoryListMixin, DetailView):
 	model = Product
 	context_object_name = 'product'
 	template_name = 'shop/product_detail.html'
@@ -79,29 +79,3 @@ class ProductDetail(DetailView, CategoryListMixin):
 		if obj.slug != self.kwargs['slug']:
 			raise Http404("Страница не найдена")
 		return obj
-
-
-class ProductCreate(PermissionRequiredMixin, CreateView, CategoryListMixin):
-	permission_required = 'product.can_add'
-	model = Product
-	fields = '__all__'
-	context_object_name = 'product'	
-	
-
-class ProductUpdate(PermissionRequiredMixin, UpdateView, CategoryListMixin):
-	permission_required = 'product.can_change'
-	model = Product
-	fields = '__all__'
-	
-
-class ProductDelete(PermissionRequiredMixin, DeleteView, CategoryListMixin):
-	permission_required = 'product.can_delete'
-	model = Product
-	success_url = '/'
-	# success_url = reverse_lazy('main:main_page')
-	# def get_context_data(self, **kwargs):
-	# 	context = super(ServiceDelete, self).get_context_data(**kwargs)
-	# 	context['back_url'] = '/services/'+ self.kwargs['pk']
-	# 	print "context['back_url']=",context
-	# 	return context
-# 

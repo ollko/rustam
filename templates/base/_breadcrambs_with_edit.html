@@ -1,0 +1,16 @@
+
+<div class="row" style="padding:9px">
+	<div class="col-6 bread-crambs">
+    {% for parent in category.get_ancestors %}
+        <span><a href="/backapp/{{ parent.slug }}/product-list-with-edit/">{{ parent.name|upper }}</a> / </span>
+    {% endfor %}
+    <span>{{ category.name|upper }} / </span>
+	</div>
+	<div class="col-6 text-right">	
+		<a href="{% url 'backapp:product_create' %}" class="add-new-products">
+			<div class='col'>
+				<p><span class="icon-plus-square" >  добавить новый товар</span></p>
+			</div>
+		</a>
+	</div>
+</div>

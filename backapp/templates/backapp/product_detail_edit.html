@@ -1,0 +1,69 @@
+{% extends "base/__base.html" %}
+
+{% load mptt_tags %}
+
+{% block title %}
+	<title>Проверка вида товара после добавления/редактирования</title>
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+
+{% block content %}
+<div class='px-3'>
+	<h4>Проверка вида товара после добавления/редактирования:</h4>
+</div >
+<!-- BREADCRAMBS -->
+<div class='m-3'>
+	<div class="row ">
+		<div class="col-12 bread-crambs m-b-2">
+	    {% for parent in category.get_ancestors %}
+	        <span><a href="/backapp/{{ parent.slug }}/product-list-with-edit/">{{ parent.name|upper }}</a> / </span>
+	        
+	    {% endfor %}
+		    <span> <a href="/backapp/{{ category.slug }}/product-list-with-edit/">{{ category.name|upper }}</a> / </span>
+	    
+	    {{ product.name }}
+		</div>
+	</div>
+</div>
+	
+
+<!-- /BREADCRAMBS -->
+
+<div class="row align-items-center">
+
+	<div class="col-6 col-lg-6">
+		
+			{% if product.image %}
+				<img style ="width:100%; padding:0 1em;" class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+			{% else %}
+
+				<!-- {% include 'base/_div-for-no-img-camera-shop.html' %} -->
+				<div class="mx-auto text-center no-product-img-cart ">нет фото</div>
+				
+			{% endif %}
+			
+		
+	</div><!--/span-->
+
+	<div class="col-6 col-lg-6">
+		
+			<div class="card-body">
+				<h5 class="card-title text-right">{{ product.name }}</h5>
+				{% if product.packaging %}<p class="card-text text-right">{{ product.packaging }}</p>{% endif %}
+				{% if product.manufacture %}<p class="card-text text-right">Изготовитель: {{ product.manufacture }}</p>{% endif %}
+				<p class="card-text text-right">{{ product.price }} руб. {% if product.typeprice %} ({{ product.typeprice }}){% endif %}</p>
+				
+				<div class="float-right">
+					<a class="btn btn-warning btn-sm" href="{% url 'backapp:product_update' product.pk %}" role="button">Редактировать</a>
+					<a class="btn btn-primary btn-sm" href="{% url 'backapp:product_create' %}" role="button">Добавить новый</a>
+				</div>				
+				
+			</div>
+		
+	</div><!--/span-->
+
+</div><!--/row-->
+{% endblock %}

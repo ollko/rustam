@@ -1,0 +1,23 @@
+{% extends "base/__base.html" %}
+
+	{% block title %}
+		<title>Здесь можно редактировать товар</title>
+	{% endblock %}
+
+	{% block jumbotron %}
+    {% endblock %}
+
+    {% block side_bar %}
+      {% include 'base/_side_bar_for_edit.html' %}
+    {% endblock %}
+
+{% block content %}
+<h4 class='p-3'>Здесь можно редактировать/добавлять новый товар</h4>
+<hr>
+<a href="{% url 'backapp:product_create' %}" class="add-new-products">
+	<div class='col'>
+		<p><span class="icon-plus-square" >  добавить новый</span></p>		
+	</div>
+</a>
+
+{% endblock %}

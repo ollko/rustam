@@ -9,5 +9,5 @@ class CategoryListMixin(ContextMixin):
 		context["nodes"]		= Category.objects.all()
 		context['current_url']  = self.request.path
 		context['user']			= self.request.user
-		# print "context['user']", context['user'].first_name
+		# context['previos_url']	= self.request.META.get('HTTP_REFERER','/')
 		return context

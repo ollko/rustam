@@ -1,4 +1,6 @@
 {% load static %}
+{% load myfilters %}
+
 <nav style="background-color: #3e964e!important" class="navbar navbar-expand-md navbar-dark bg-dark rounded mb-3 sticky-top">
   <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon "></span>
@@ -21,7 +23,19 @@
       <li class="nav-item {% if contacts == current_url %}active{% endif %}">
         <a class="nav-link" href="{% url 'home:contacts' %}">Контакты</a>
       </li>
-      
+
+    {% if user.is_authenticated %}
+      {% if user|has_group:'can_deal_with_products' or user.is_admin %}
+            {% url 'backapp:orderlist' as orders %}
+              <li class="nav-item ">    
+                <a class="nav-link nav-link-yellow {% if orders == current_url %}active{% endif %}" href="{% url 'backapp:orderlist' %}">Заказы</a>
+              </li>
+            {% url 'backapp:edit' as edit %}
+              <li class="nav-item ">    
+                <a class="nav-link nav-link-yellow {% if edit == current_url %}active{% endif %}" href="{% url 'backapp:edit' %}">Редактировать</a>
+              </li>
+      {% endif %}
+    {% endif %}  
     </ul>
     
   </div>

@@ -1,0 +1,44 @@
+{% extends "base/__single_base.html" %}
+{% load static %}
+
+	{% block title %}
+		<title>Список заказов на сайте</title>
+	{% endblock %}
+
+{% block content %}
+<h4 class="text-center"> Список заказов, сделанных на сайте:</h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <!-- <th scope="col">Номер заказа</th> -->
+	  <th scope="col">Дата</th> 
+      <th scope="col">Кто заказал</th>
+      <th scope="col">Статус заказа</th>
+      <th scope="col">Заказ в PDF</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+	{% for order in orders %}
+	    <tr>
+			<!-- <th scope="row">{{forloop.counter}}</th> -->
+			<td class="pl-5">№{{order.id}}</td>
+			<td>{{order.created}}</td>
+			<td>
+			{% if order.user %}{{order.user.email}}{% else %}{{order.guest_profile.user}}{% endif %}
+			</td>
+			<td></td>	
+			<td class="pl-5">
+				<a href="{% url 'orders:GeneratePDF' order.id %}"><img src="{% static 'img/get_pdf.jpg' %}"></a>
+			</td>				
+	    </tr>
+	{% endfor %}
+  </tbody>
+</table>
+
+<div class='pagination p-2'>
+	{% include 'base/_pagination.html' %}
+</div>
+{% endblock %}

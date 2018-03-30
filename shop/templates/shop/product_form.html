@@ -11,12 +11,15 @@
 	{% block content %}
 <div class = 'container'>
 	<div class="my-form-header">
-		<a href="/" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+		<a href="{% if not back_url %}{% url 'backapp:edit' %}{% else %}{{ back_url }}{% endif %}" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
 		<h4 class="lead">ДОБАВИТЬ/РЕДАКТИРОВАТЬ ТОВАР</h4>
 	</div>
 	<hr>
 	<form  action="" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
+	<div class='row'>
+		{{form.errors}}
+	</div>
 	<div class="row">
 		<div class="col">
 			<p>
@@ -39,7 +42,7 @@
 				</div>			
 			</div>
 			<div class='row justify-content-between'>
-				<div class="col">
+				<div class="col-6">
 					<p>
 						{{form.name.label}}
 					</p>					
@@ -116,8 +119,8 @@
 	</div>
 	 
 	<div class="my-form-footer">
-	<a href="/" type="button" class="btn btn-default" >ОТМЕНИТЬ</a>
-	<button type="submit" class="btn btn-success">СОХРАНИТЬ</button>
+	<a href="{% if not back_url %}{% url 'backapp:edit' %}{% else %}{{ back_url }}{% endif %}" type="button" class="btn btn-default btn-sm" >ОТМЕНИТЬ</a>
+	<button type="submit" class="btn btn-success btn-sm">СОХРАНИТЬ</button>
 	</div>
 
 

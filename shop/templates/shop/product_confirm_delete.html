@@ -1,0 +1,25 @@
+{% extends "base/__single_base.html" %}
+{% load bootstrap %}
+
+
+	{% block title %}
+		<title>Добавление/правка товара</title>
+	{% endblock %}
+
+	{% block metrika %}{% endblock %}
+	{% block content %}
+
+	<div class="text-center">
+		<h4 class="text-center">Вы действительно хотите удалить данный товар?</h4>
+		<h4 class="text-center ">{{ object.name }}</h4>
+		<img src="{{ object.image.url }}" style = "width:250px">
+			<div class="py-3">
+				<form action="" method="POST">
+					{% csrf_token %}
+					<input class="btn btn-warning" type="submit" action="" value="Да, удалить." />
+				</form>
+				<a class="btn btn-default" href="{{ back_url }}" role="button">Нет, оставить.</a>
+			</div>				
+	</div>
+
+{% endblock %}

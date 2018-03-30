@@ -1,0 +1,56 @@
+{% load static %}
+	<thead>
+		<tr>
+			<th >Товар</th>
+			<th >Описание</th>
+			<th ></th>
+			<th >Цена</th>
+			<th></th>
+		</tr>
+	</thead>
+  <tbody>
+ 
+  {% for product in products %}
+
+	<tr>
+		<td style="width:125.5px">
+			<a href="{{ product.get_absolute_url }}">
+			{% if product.image %}
+				<img style ="width:100%" class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+			{% else %}
+				<div class='no-product-img' style="width:7em;heigth:7em"></div>
+			{% endif %}
+			</a>
+		</td> 
+		<td>
+			<p >{{ product.name }}</p>
+		</td>
+		<td>
+			{% if product.packaging %}
+			<p>{{ product.packaging }}</p>
+			{% endif %}
+		</td>
+		<td>
+			<p><b>{{ product.price|floatformat:"-2" }} руб.</b>{% if product.typeprice%}  {{ product.typeprice }} </p>{% endif %}
+		</td>
+		<td>
+			<p class="text-center">
+				<a href="{% url 'backapp:product_update' product.pk %}" class="btn btn-warning btn-sm ">Редактировать</a>	
+			</p>
+			
+				<form action="{% url 'backapp:product_delete' product.id %}">
+				<!-- {% csrf_token %} -->
+				<p  class="text-center">
+				<input type="submit" class="btn btn-danger btn-sm " value="Удалить">
+				</p>
+			</form>
+				      	
+		</td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+
+
+
+

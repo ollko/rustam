@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^orders/', include('orders.urls')),
     url(r'^catalog/', include("shop.urls")),
+    url(r'^backapp/', include("backapp.urls")),
     
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type = 'text/plain')),
     
