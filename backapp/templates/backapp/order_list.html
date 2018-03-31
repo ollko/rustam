@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <!-- <th scope="col">Номер заказа</th> -->
+      <th scope="col">Номер заказа</th>
 	  <th scope="col">Дата</th> 
       <th scope="col">Кто заказал</th>
       <th scope="col">Статус заказа</th>
@@ -23,7 +23,7 @@
   <tbody>
 	{% for order in orders %}
 	    <tr>
-			<!-- <th scope="row">{{forloop.counter}}</th> -->
+			<th scope="row">{{ page_obj.start_index|add:forloop.counter0 }}</th>
 			<td class="pl-5">№{{order.id}}</td>
 			<td>{{order.created}}</td>
 			<td>

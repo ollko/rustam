@@ -34,7 +34,6 @@ class ProductCreateView(PermissionRequiredMixin, CategoryListMixin, CreateView):
 
 	def get_success_url(self):
 		self.success_url = self.object.get_after_create_url()
-		# print 'self.success_url=',self.success_url
 		return super(ProductCreateView, self).get_success_url()
 
 # На этой странице список товара для редактирования:

@@ -64,7 +64,6 @@ class ProductDetail(CategoryListMixin, DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(ProductDetail, self).get_context_data(**kwargs)
 		context['category'] = Category.objects.get(cat=self.kwargs['pk'])
-		print 'context["category"]=', context['category'].__dict__
 		# Вместо 'cat' может быть - cat, children, id, level, lft, name, parent, parent_id, rght, slug, tree_id
 		context['cart_product_form'] = CartAddProductForm()
 
