@@ -25,31 +25,32 @@
 </div>
 <br>
 <!-- /BREADCRAMBS -->
-
-<div class="row align-items-center">
-
-	<div class="col-6 col-lg-6">
+<div itemscope itemtype="http://schema.org/Product">
+	<div class="row align-items-center">	
+		<div class="col-6 col-lg-6">
 		
 			{% if product.image %}
-				<img style ="width:100%; padding:0 1em;" class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+	
+				<img itemprop="image" style ="width:100%; padding:0 1em;" class="img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
 			{% else %}
 
-				<!-- {% include 'base/_div-for-no-img-camera-shop.html' %} -->
 				<div class="mx-auto text-center no-product-img-cart ">нет фото</div>
 				
 			{% endif %}
 			
 		
-	</div><!--/span-->
+		</div><!--/span-->
 
-	<div class="col-6 col-lg-6">
-		
+	<div class="col-6 col-lg-6">		
 			<div class="card-body">
-				<h5 class="card-title text-right">{{ product.name }}</h5>
+				<h5 itemprop="name" class="card-title text-right">{{ product.name }}</h5>
+				<span itemprop="description" style="display:none">{{ product.name }}</span>
 				{% if product.packaging %}<p class="card-text text-right">{{ product.packaging }}</p>{% endif %}
 				{% if product.manufacture %}<p class="card-text text-right">Изготовитель: {{ product.manufacture }}</p>{% endif %}
-				<p class="card-text text-right">{{ product.price }} руб. {% if product.typeprice %} ({{ product.typeprice }}){% endif %}</p>
-				
+				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+					<p class="card-text text-right"><span itemprop="price">{{ product.price }} </span><span itemprop="priceCurrency">RUB</span>{% if product.typeprice %} (за {{ product.typeprice }}){% endif %}</p>
+				</div>
+							
 				{% if product.in_stock %}
 				<p class="text-muted text-right in-stock">в наличии</p>
 				<div class="float-right">
@@ -66,6 +67,9 @@
 			</div>
 		
 	</div><!--/span-->
+	</div>
+
+
 
 </div><!--/row-->
 {% endblock %}
