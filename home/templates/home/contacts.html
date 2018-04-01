@@ -8,50 +8,42 @@
 {% block jumbotron %}
 {% endblock %}
 
-
-
 {% block content %}
-
-<div class="container vcard contacts-page">
-	{% comment %}
-	<div class="row ">
-		<div class="col-xs-12 col-md-12 wrapper">
-			<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,whatsapp,telegram" data-url="http://www.pls-posuda.ru" data-image="#" data-description = 'Пластиковая посуда. Магазин Хозяйственных товаров.'></div>
-		</div>	
+<div itemscope itemtype="http://schema.org/Organization">
+	<div class="container contacts-page">
+	<span itemprop="name" style="display:None">Магазин расходных материалов для вашего бизнеса</span>
+		<h3>Контакты</h3>
+		
+	<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+		<div><strong>Наш адрес:</strong></div>
+		<p>
+			<span itemprop="streetAddress">улица Кусковская, 12, Перово</span>,
+		    <span itemprop="postalCode"></span>
+		    <span itemprop="addressLocality">Москва</span>,
+		</p>
+		
 	</div>
-	{% endcomment %}	
-	<div class="row ">
-		<div class="col-xs-12 col-md-6">
-			<h3><span class='fn org'>Контакты</span></h4>
-			
-
-			<div><strong>Наш адрес:</strong></div>
-			<div class='adr'>
-				<p><span class='region'>Москва,</span>
-				<span class = 'locality'>Перово,</span><br>
-				<span class='street-address'>улица Кусковская, 12</span></p>
-
-			</div>
-			<div class="geo">
-				<abbr class="latitude" title="55.737689"></abbr>
-				<abbr class="longitude" title="37.778418"></abbr>
-			</div>
-			<div><strong>Мы работаем:</strong>
-				<span class="workhours">пн-пт 9:00-18:00</span>
-			</div>
-			
-			<p> <span class='tel'>+7 (910) 480-81-86</span>
-			
-			<div class="email">
-					<a href="mailto:#">order@posuda-pls.ru</a>
-			</div>
-			
-		</div>
-		<div class="col-xs-12 col-md-6">
-			<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aae506805259efbd9ce6b98985dbca683677fc93444058e077100cd9c97dd20af&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
-		</div>
+	<p>
+		<div><strong>Телефон:</strong></div>
+		<span itemprop="telephone">+7 910 480-81-86</span>,
+	</p>
+	<p>
+		<div><strong>Электронная почта: </strong></div>
+		<span itemprop="email">order@posuda-pls.ru</span>
+	</p>
+	
 		
-	</div><!--/row-->
-		
+		<div><strong>Мы работаем:</strong>
+			<time
+			 itemprop="openingHours"
+			 datetime="Mo,Fr 9:00−18:00">пн-пт с 9.00 до 18.00
+			</time>
+		</div>
+		<br>
+	</div>
 </div>
+			<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aae506805259efbd9ce6b98985dbca683677fc93444058e077100cd9c97dd20af&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+
+
+
 {% endblock %}
