@@ -37,7 +37,8 @@ class ProductCreateView(PermissionRequiredMixin, CategoryListMixin, CreateView):
 		return super(ProductCreateView, self).get_success_url()
 
 # На этой странице список товара для редактирования:
-class ProductListEditView(CategoryListMixin, ListView):
+class ProductListEditView(PermissionRequiredMixin, CategoryListMixin, ListView):
+	permission_required = 'product.can_add'
 	model = Product
 	context_object_name = 'products'
 	template_name = 'backapp/product_edit_list.html'
@@ -100,7 +101,8 @@ class ProductDelete(PermissionRequiredMixin, CategoryListMixin, DeleteView):
 
 
 
-class ProductSuccessDetail(CategoryListMixin, DetailView):
+class ProductSuccessDetail(PermissionRequiredMixin, CategoryListMixin, DetailView):
+	permission_required = 'product.can_add'
 	model = Product
 	context_object_name = 'product'
 	template_name = 'backapp/product_detail_edit.html'

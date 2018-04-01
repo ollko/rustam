@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'bootstrapform',
     'xhtml2pdf',
     'phonenumber_field',
-       
+    'imagekit',
+           
     'home',
     'shop',
     'orders',

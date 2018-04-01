@@ -10,6 +10,9 @@ from mptt.models import MPTTModel, TreeForeignKey
 from .utils import unique_slug_generator
 from django.core.urlresolvers import reverse
 
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
+
 PACKAGING =  (
             ('коробка', 'коробка',),
             ('упаковка', 'упаковка',),
@@ -59,8 +62,17 @@ class Product(models.Model):
     category    = TreeForeignKey('Category', null=True, blank=True, db_index=True, related_name='cat', verbose_name=u"Категория")
     name        = models.CharField(max_length=200, db_index=True, verbose_name=u"Название")
     slug        = models.SlugField(max_length=200, db_index=True, default='page-slug', blank=True)
-    image       = models.ImageField(upload_to='pic_of_product/',blank=True, null=True, default=None,
-                                 verbose_name=u"Изображение товара")
+    # image       = models.ImageField(upload_to='pic_of_product/',blank=True, null=True, default=None,
+    #                              verbose_name=u"Изображение товара")
+
+    image       = ProcessedImageField(verbose_name = 'Изображение товара',
+                                        upload_to='pic_of_product/',
+                                        help_text = "Будет лучше загрузить фото в форме квадрата",
+                                        processors= [ResizeToFill(800,800)],
+                                        format='JPEG',
+                                        options={'quality': 60},
+                                        blank=True, null=True, default=None,)
+
     packaging   = models.CharField(choices = PACKAGING, max_length=20, verbose_name=u"Упаковка", blank=True, null=True, default=None)
 
     # description = models.TextField(blank=True, verbose_name="Описание")
