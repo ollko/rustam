@@ -15,7 +15,7 @@
 
 	{% if current_url == '/accounts/login/' or current_url == '/accounts/createuser/' %}
 	{% else %}
-		<a href="{% url 'accounts:login' %}">Вход </a>|<a href="{% url 'accounts:login' %}"> Регистрация</a>
+		<a href="{% url 'accounts:login' %}">Вход </a>|<a href="{% url 'accounts:createuser' %}"> Регистрация</a>
 	{% endif %}
 {% endif %}
 
