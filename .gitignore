@@ -1,6 +1,6 @@
 rustam2/settings/local.py
 db.sqlite3
-# uploads/
+uploads/
 orders/tmp/
 # shop.json
 
