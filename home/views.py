@@ -21,6 +21,8 @@ class HomeView(CategoryListMixin, ListView):
 	template_name = "home/home.html"
 	queryset = Product.objects.all().filter(popular = True).exclude(in_stock = False)
 	context_object_name = 'products'
+
+	
 	def get_context_data(self, **kwargs):
 		context            				= super(HomeView, self).get_context_data(**kwargs)
 		context['cart_product_form'] 	= CartAddProductForm()
@@ -31,6 +33,8 @@ class SearchView(CategoryListMixin, ListView):
 	model = Product
 	template_name = "home/search.html"
 	context_object_name = 'products'
+	paginate_by = 6
+	paginate_orphans = 1
 	
 	def get_context_data(self, **kwargs):
 		context            = super(SearchView, self).get_context_data(**kwargs)
